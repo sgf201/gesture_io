@@ -1,0 +1,7 @@
+/home/sgf/ws/k230_gesture_io/build/CMakeFiles/gesture_io_control.elf.dir
+/home/sgf/ws/k230_gesture_io/build/CMakeFiles/edit_cache.dir
+/home/sgf/ws/k230_gesture_io/build/CMakeFiles/rebuild_cache.dir
+/home/sgf/ws/k230_gesture_io/build/CMakeFiles/list_install_components.dir
+/home/sgf/ws/k230_gesture_io/build/CMakeFiles/install.dir
+/home/sgf/ws/k230_gesture_io/build/CMakeFiles/install/local.dir
+/home/sgf/ws/k230_gesture_io/build/CMakeFiles/install/strip.dir
