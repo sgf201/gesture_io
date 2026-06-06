@@ -1,7 +1,8 @@
-The system is: Linux - 6.6.114.1-microsoft-standard-WSL2 - x86_64
+The target system is: Generic -  - riscv64
+The host system is: Linux - 6.6.114.1-microsoft-standard-WSL2 - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /usr/bin/cc 
-Build flags: 
+Compiler: /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc 
+Build flags: ;-march=rv64imafdcv;-mabi=lp64d;-mcmodel=medany;-march=rv64imafdcv;-mabi=lp64d;-mcmodel=medany
 Id flags:  
 
 The output was:
@@ -13,8 +14,8 @@ Compilation of the C compiler identification source "CMakeCCompilerId.c" produce
 The C compiler identification is GNU, found in "/home/sgf/ws/k230_gesture_io/build/CMakeFiles/3.22.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: /usr/bin/c++ 
-Build flags: 
+Compiler: /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ 
+Build flags: ;-fopenmp;-march=rv64imafdcv;-mabi=lp64d;-mcmodel=medany;-fopenmp;-march=rv64imafdcv;-mabi=lp64d;-mcmodel=medany
 Id flags:  
 
 The output was:
@@ -28,64 +29,59 @@ The CXX compiler identification is GNU, found in "/home/sgf/ws/k230_gesture_io/b
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5e7ca/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5e7ca.dir/build.make CMakeFiles/cmTC_5e7ca.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_59810/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_59810.dir/build.make CMakeFiles/cmTC_59810.dir/build
 gmake[1]: Entering directory '/home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc   -v -o CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
+Building C object CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj
+/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc   -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -march=rv64imafdcv -mabi=lp64d -mcmodel=medany    -v -o CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
 Using built-in specs.
-COLLECT_GCC=/usr/bin/cc
-OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
-OFFLOAD_TARGET_DEFAULT=1
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.3' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+COLLECT_GCC=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc
+Target: riscv64-unknown-linux-musl
+Configured with: /builds/canaan-creative/riscv-toolchain/gcc/configure --target=riscv64-unknown-linux-musl --prefix=/builds/canaan-creative/riscv-toolchain/install-native/ --with-sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --with-system-zlib --enable-shared --enable-tls --enable-languages=c,c++,fortran --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libsanitizer --disable-nls --disable-bootstrap --src=/builds/canaan-creative/riscv-toolchain/gcc --disable-multilib --with-abi=lp64d --with-arch=rv64imafdcv --with-tune=rocket 'CFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d' 'CXXFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d'
 Thread model: posix
-Supported LTO compression algorithms: zlib zstd
-gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_5e7ca.dir/'
- /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_5e7ca.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccr75veY.s
-GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04.3) version 11.4.0 (x86_64-linux-gnu)
-	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+Supported LTO compression algorithms: zlib
+gcc version 12.0.1 20220505 (prerelease) (GCC) 
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-dumpdir' 'CMakeFiles/cmTC_59810.dir/'
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/cc1 -quiet -v -iprefix /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/ /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_59810.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcmodel=medany -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -mtune=rocket -misa-spec=20191213 -march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b -version -o /tmp/cchk4RLA.s
+GNU C17 (GCC) version 12.0.1 20220505 (prerelease) (riscv64-unknown-linux-musl)
+	compiled by GNU C version 9.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
-ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"
-ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+ignoring nonexistent directory "/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl/usr/local/include"
+ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include"
+ignoring nonexistent directory "/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl/usr/include"
+ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include"
 #include "..." search starts here:
 #include <...> search starts here:
- /usr/lib/gcc/x86_64-linux-gnu/11/include
- /usr/local/include
- /usr/include/x86_64-linux-gnu
- /usr/include
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include
 End of search list.
-GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04.3) version 11.4.0 (x86_64-linux-gnu)
-	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+GNU C17 (GCC) version 12.0.1 20220505 (prerelease) (riscv64-unknown-linux-musl)
+	compiled by GNU C version 9.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-Compiler executable checksum: 46ebede1f5b795a957a1e85cb61af9d8
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_5e7ca.dir/'
- as -v --64 -o CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o /tmp/ccr75veY.s
-GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.'
-Linking C executable cmTC_5e7ca
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5e7ca.dir/link.txt --verbose=1
-/usr/bin/cc  -v CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o -o cmTC_5e7ca 
+Compiler executable checksum: 3f69e773161d85594256b016a7c76253
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-dumpdir' 'CMakeFiles/cmTC_59810.dir/'
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/as -v --traditional-format -march=rv64imafdcv -march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b -mabi=lp64d -misa-spec=20191213 -o CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj /tmp/cchk4RLA.s
+GNU assembler version 2.39 (riscv64-unknown-linux-musl) using BFD version (GNU Binutils) 2.39
+COMPILER_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/
+LIBRARY_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-dumpdir' 'CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.'
+Linking C executable cmTC_59810
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59810.dir/link.txt --verbose=1
+/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc  -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -march=rv64imafdcv -mabi=lp64d -mcmodel=medany   -v CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj -o cmTC_59810 
 Using built-in specs.
-COLLECT_GCC=/usr/bin/cc
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper
-OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
-OFFLOAD_TARGET_DEFAULT=1
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.3' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+COLLECT_GCC=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc
+COLLECT_LTO_WRAPPER=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper
+Target: riscv64-unknown-linux-musl
+Configured with: /builds/canaan-creative/riscv-toolchain/gcc/configure --target=riscv64-unknown-linux-musl --prefix=/builds/canaan-creative/riscv-toolchain/install-native/ --with-sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --with-system-zlib --enable-shared --enable-tls --enable-languages=c,c++,fortran --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libsanitizer --disable-nls --disable-bootstrap --src=/builds/canaan-creative/riscv-toolchain/gcc --disable-multilib --with-abi=lp64d --with-arch=rv64imafdcv --with-tune=rocket 'CFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d' 'CXXFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d'
 Thread model: posix
-Supported LTO compression algorithms: zlib zstd
-gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_5e7ca' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_5e7ca.'
- /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccy5arLr.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_5e7ca /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_5e7ca' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_5e7ca.'
+Supported LTO compression algorithms: zlib
+gcc version 12.0.1 20220505 (prerelease) (GCC) 
+COMPILER_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/
+LIBRARY_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'cmTC_59810' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-dumpdir' 'cmTC_59810.'
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/collect2 -plugin /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/liblto_plugin.so -plugin-opt=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cctbPAtB.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --eh-frame-hdr -melf64lriscv -dynamic-linker /lib/ld-musl-riscv64.so.1 -o cmTC_59810 /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1 -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'cmTC_59810' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-dumpdir' 'cmTC_59810.'
 gmake[1]: Leaving directory '/home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp'
 
 
@@ -93,114 +89,94 @@ gmake[1]: Leaving directory '/home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMake
 Parsed C implicit include dir info from above output: rv=done
   found start of include info
   found start of implicit include info
-    add: [/usr/lib/gcc/x86_64-linux-gnu/11/include]
-    add: [/usr/local/include]
-    add: [/usr/include/x86_64-linux-gnu]
-    add: [/usr/include]
+    add: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include]
+    add: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include]
   end of search list found
-  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/11/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/include]
-  collapse include dir [/usr/local/include] ==> [/usr/local/include]
-  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
-  collapse include dir [/usr/include] ==> [/usr/include]
-  implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/11/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+  collapse include dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include]
+  collapse include dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/include]
+  implicit include dirs: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/include]
 
 
 Parsed C implicit link information from above output:
-  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  link line regex: [^( *|.*[/\])(riscv64-unknown-linux-musl-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5e7ca/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5e7ca.dir/build.make CMakeFiles/cmTC_5e7ca.dir/build]
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_59810/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_59810.dir/build.make CMakeFiles/cmTC_59810.dir/build]
   ignore line: [gmake[1]: Entering directory '/home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
+  ignore line: [Building C object CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc   -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -march=rv64imafdcv -mabi=lp64d -mcmodel=medany    -v -o CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
   ignore line: [Using built-in specs.]
-  ignore line: [COLLECT_GCC=/usr/bin/cc]
-  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
-  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.3' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+  ignore line: [COLLECT_GCC=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc]
+  ignore line: [Target: riscv64-unknown-linux-musl]
+  ignore line: [Configured with: /builds/canaan-creative/riscv-toolchain/gcc/configure --target=riscv64-unknown-linux-musl --prefix=/builds/canaan-creative/riscv-toolchain/install-native/ --with-sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --with-system-zlib --enable-shared --enable-tls --enable-languages=c c++ fortran --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libsanitizer --disable-nls --disable-bootstrap --src=/builds/canaan-creative/riscv-toolchain/gcc --disable-multilib --with-abi=lp64d --with-arch=rv64imafdcv --with-tune=rocket 'CFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d' 'CXXFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d']
   ignore line: [Thread model: posix]
-  ignore line: [Supported LTO compression algorithms: zlib zstd]
-  ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_5e7ca.dir/']
-  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_5e7ca.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccr75veY.s]
-  ignore line: [GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04.3) version 11.4.0 (x86_64-linux-gnu)]
-  ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 12.0.1 20220505 (prerelease) (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-mcmodel=medany' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-dumpdir' 'CMakeFiles/cmTC_59810.dir/']
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/cc1 -quiet -v -iprefix /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/ /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_59810.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcmodel=medany -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -mtune=rocket -misa-spec=20191213 -march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b -version -o /tmp/cchk4RLA.s]
+  ignore line: [GNU C17 (GCC) version 12.0.1 20220505 (prerelease) (riscv64-unknown-linux-musl)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
-  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"]
-  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl/usr/local/include"]
+  ignore line: [ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include"]
+  ignore line: [ignoring nonexistent directory "/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl/usr/include"]
+  ignore line: [ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include"]
   ignore line: [#include "..." search starts here:]
   ignore line: [#include <...> search starts here:]
-  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/include]
-  ignore line: [ /usr/local/include]
-  ignore line: [ /usr/include/x86_64-linux-gnu]
-  ignore line: [ /usr/include]
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include]
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include]
   ignore line: [End of search list.]
-  ignore line: [GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04.3) version 11.4.0 (x86_64-linux-gnu)]
-  ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: [GNU C17 (GCC) version 12.0.1 20220505 (prerelease) (riscv64-unknown-linux-musl)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [Compiler executable checksum: 46ebede1f5b795a957a1e85cb61af9d8]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_5e7ca.dir/']
-  ignore line: [ as -v --64 -o CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o /tmp/ccr75veY.s]
-  ignore line: [GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.']
-  ignore line: [Linking C executable cmTC_5e7ca]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5e7ca.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o -o cmTC_5e7ca ]
+  ignore line: [Compiler executable checksum: 3f69e773161d85594256b016a7c76253]
+  ignore line: [COLLECT_GCC_OPTIONS='-mcmodel=medany' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-dumpdir' 'CMakeFiles/cmTC_59810.dir/']
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/as -v --traditional-format -march=rv64imafdcv -march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b -mabi=lp64d -misa-spec=20191213 -o CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj /tmp/cchk4RLA.s]
+  ignore line: [GNU assembler version 2.39 (riscv64-unknown-linux-musl) using BFD version (GNU Binutils) 2.39]
+  ignore line: [COMPILER_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/]
+  ignore line: [LIBRARY_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-mcmodel=medany' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-dumpdir' 'CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.']
+  ignore line: [Linking C executable cmTC_59810]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59810.dir/link.txt --verbose=1]
+  ignore line: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc  -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -march=rv64imafdcv -mabi=lp64d -mcmodel=medany   -v CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj -o cmTC_59810 ]
   ignore line: [Using built-in specs.]
-  ignore line: [COLLECT_GCC=/usr/bin/cc]
-  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper]
-  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
-  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.3' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+  ignore line: [COLLECT_GCC=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper]
+  ignore line: [Target: riscv64-unknown-linux-musl]
+  ignore line: [Configured with: /builds/canaan-creative/riscv-toolchain/gcc/configure --target=riscv64-unknown-linux-musl --prefix=/builds/canaan-creative/riscv-toolchain/install-native/ --with-sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --with-system-zlib --enable-shared --enable-tls --enable-languages=c c++ fortran --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libsanitizer --disable-nls --disable-bootstrap --src=/builds/canaan-creative/riscv-toolchain/gcc --disable-multilib --with-abi=lp64d --with-arch=rv64imafdcv --with-tune=rocket 'CFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d' 'CXXFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d']
   ignore line: [Thread model: posix]
-  ignore line: [Supported LTO compression algorithms: zlib zstd]
-  ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) ]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_5e7ca' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_5e7ca.']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccy5arLr.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_5e7ca /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/collect2] ==> ignore
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 12.0.1 20220505 (prerelease) (GCC) ]
+  ignore line: [COMPILER_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/]
+  ignore line: [LIBRARY_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-mcmodel=medany' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'cmTC_59810' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-dumpdir' 'cmTC_59810.']
+  link line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/collect2 -plugin /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/liblto_plugin.so -plugin-opt=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cctbPAtB.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --eh-frame-hdr -melf64lriscv -dynamic-linker /lib/ld-musl-riscv64.so.1 -o cmTC_59810 /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1 -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/collect2] ==> ignore
     arg [-plugin] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccy5arLr.res] ==> ignore
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cctbPAtB.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-    arg [--build-id] ==> ignore
+    arg [--sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
-    arg [--hash-style=gnu] ==> ignore
-    arg [--as-needed] ==> ignore
+    arg [-melf64lriscv] ==> ignore
     arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-    arg [-pie] ==> ignore
-    arg [-znow] ==> ignore
-    arg [-zrelro] ==> ignore
+    arg [/lib/ld-musl-riscv64.so.1] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_5e7ca] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib]
-    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
-    arg [-L/lib/../lib] ==> dir [/lib/../lib]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
-    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..]
-    arg [CMakeFiles/cmTC_5e7ca.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [cmTC_59810] ==> ignore
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o]
+    arg [-L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1] ==> dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1]
+    arg [-L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc] ==> dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc]
+    arg [-L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib] ==> dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib]
+    arg [CMakeFiles/cmTC_59810.dir/CMakeCCompilerABI.c.obj] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -212,90 +188,85 @@ Parsed C implicit link information from above output:
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
     arg [--pop-state] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
-  collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
-  collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
-  collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11] ==> [/usr/lib/gcc/x86_64-linux-gnu/11]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> [/usr/lib]
-  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
-  collapse library dir [/lib/../lib] ==> [/lib]
-  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> [/usr/lib]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib/crt1.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o]
+  collapse library dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1]
+  collapse library dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc]
+  collapse library dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib]
   implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
-  implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit objs: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib/crt1.o;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o]
+  implicit dirs: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib]
   implicit fwks: []
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_167e9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_167e9.dir/build.make CMakeFiles/cmTC_167e9.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8bccf/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8bccf.dir/build.make CMakeFiles/cmTC_8bccf.dir/build
 gmake[1]: Entering directory '/home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++   -v -o CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp
+Building CXX object CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj
+/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++   -fopenmp -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -fopenmp -march=rv64imafdcv -mabi=lp64d -mcmodel=medany    -v -o CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp
 Using built-in specs.
-COLLECT_GCC=/usr/bin/c++
-OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
-OFFLOAD_TARGET_DEFAULT=1
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.3' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+COLLECT_GCC=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++
+Target: riscv64-unknown-linux-musl
+Configured with: /builds/canaan-creative/riscv-toolchain/gcc/configure --target=riscv64-unknown-linux-musl --prefix=/builds/canaan-creative/riscv-toolchain/install-native/ --with-sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --with-system-zlib --enable-shared --enable-tls --enable-languages=c,c++,fortran --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libsanitizer --disable-nls --disable-bootstrap --src=/builds/canaan-creative/riscv-toolchain/gcc --disable-multilib --with-abi=lp64d --with-arch=rv64imafdcv --with-tune=rocket 'CFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d' 'CXXFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d'
 Thread model: posix
-Supported LTO compression algorithms: zlib zstd
-gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_167e9.dir/'
- /usr/lib/gcc/x86_64-linux-gnu/11/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_167e9.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cchx9omw.s
-GNU C++17 (Ubuntu 11.4.0-1ubuntu1~22.04.3) version 11.4.0 (x86_64-linux-gnu)
-	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+Supported LTO compression algorithms: zlib
+gcc version 12.0.1 20220505 (prerelease) (GCC) 
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-fopenmp' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_8bccf.dir/'
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/cc1plus -quiet -v -iprefix /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/ -D_GNU_SOURCE -D_REENTRANT /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_8bccf.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcmodel=medany -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -mtune=rocket -misa-spec=20191213 -march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b -version -fopenmp -o /tmp/cchIeb5n.s
+GNU C++17 (GCC) version 12.0.1 20220505 (prerelease) (riscv64-unknown-linux-musl)
+	compiled by GNU C version 9.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/11"
-ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
-ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"
-ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1"
+ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/riscv64-unknown-linux-musl"
+ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/backward"
+ignoring nonexistent directory "/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl/usr/local/include"
+ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include"
+ignoring nonexistent directory "/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl/usr/include"
+ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include"
 #include "..." search starts here:
 #include <...> search starts here:
- /usr/include/c++/11
- /usr/include/x86_64-linux-gnu/c++/11
- /usr/include/c++/11/backward
- /usr/lib/gcc/x86_64-linux-gnu/11/include
- /usr/local/include
- /usr/include/x86_64-linux-gnu
- /usr/include
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/riscv64-unknown-linux-musl
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/backward
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include
 End of search list.
-GNU C++17 (Ubuntu 11.4.0-1ubuntu1~22.04.3) version 11.4.0 (x86_64-linux-gnu)
-	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+GNU C++17 (GCC) version 12.0.1 20220505 (prerelease) (riscv64-unknown-linux-musl)
+	compiled by GNU C version 9.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-Compiler executable checksum: ac7fa628ee459f217e6fdb88b3db0bde
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_167e9.dir/'
- as -v --64 -o CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o /tmp/cchx9omw.s
-GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.'
-Linking CXX executable cmTC_167e9
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_167e9.dir/link.txt --verbose=1
-/usr/bin/c++  -v CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_167e9 
+Compiler executable checksum: 2a7c4c9326bc576a073cebd355eeafab
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-fopenmp' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_8bccf.dir/'
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/as -v --traditional-format -march=rv64imafdcv -march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b -mabi=lp64d -misa-spec=20191213 -o CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cchIeb5n.s
+GNU assembler version 2.39 (riscv64-unknown-linux-musl) using BFD version (GNU Binutils) 2.39
+COMPILER_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/
+LIBRARY_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-fopenmp' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.'
+Linking CXX executable cmTC_8bccf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8bccf.dir/link.txt --verbose=1
+/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++  -fopenmp -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -fopenmp -march=rv64imafdcv -mabi=lp64d -mcmodel=medany   -v CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_8bccf 
 Using built-in specs.
-COLLECT_GCC=/usr/bin/c++
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper
-OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
-OFFLOAD_TARGET_DEFAULT=1
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.3' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+COLLECT_GCC=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++
+COLLECT_LTO_WRAPPER=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper
+Target: riscv64-unknown-linux-musl
+Configured with: /builds/canaan-creative/riscv-toolchain/gcc/configure --target=riscv64-unknown-linux-musl --prefix=/builds/canaan-creative/riscv-toolchain/install-native/ --with-sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --with-system-zlib --enable-shared --enable-tls --enable-languages=c,c++,fortran --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libsanitizer --disable-nls --disable-bootstrap --src=/builds/canaan-creative/riscv-toolchain/gcc --disable-multilib --with-abi=lp64d --with-arch=rv64imafdcv --with-tune=rocket 'CFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d' 'CXXFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d'
 Thread model: posix
-Supported LTO compression algorithms: zlib zstd
-gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_167e9' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_167e9.'
- /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccS0pdpE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_167e9 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_167e9' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_167e9.'
+Supported LTO compression algorithms: zlib
+gcc version 12.0.1 20220505 (prerelease) (GCC) 
+COMPILER_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/
+LIBRARY_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/
+Reading specs from /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/libgomp.spec
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-fopenmp' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'cmTC_8bccf' '-shared-libgcc' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-pthread' '-dumpdir' 'cmTC_8bccf.'
+ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/collect2 -plugin /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/liblto_plugin.so -plugin-opt=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccuEZnFh.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-latomic -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --eh-frame-hdr -melf64lriscv -dynamic-linker /lib/ld-musl-riscv64.so.1 -o cmTC_8bccf /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1 -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgomp -lgcc_s -lgcc -lpthread -lc --push-state --as-needed -latomic --pop-state -lgcc_s -lgcc /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o
+COLLECT_GCC_OPTIONS='-mcmodel=medany' '-fopenmp' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'cmTC_8bccf' '-shared-libgcc' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-pthread' '-dumpdir' 'cmTC_8bccf.'
 gmake[1]: Leaving directory '/home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp'
 
 
@@ -303,147 +274,135 @@ gmake[1]: Leaving directory '/home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMake
 Parsed CXX implicit include dir info from above output: rv=done
   found start of include info
   found start of implicit include info
-    add: [/usr/include/c++/11]
-    add: [/usr/include/x86_64-linux-gnu/c++/11]
-    add: [/usr/include/c++/11/backward]
-    add: [/usr/lib/gcc/x86_64-linux-gnu/11/include]
-    add: [/usr/local/include]
-    add: [/usr/include/x86_64-linux-gnu]
-    add: [/usr/include]
+    add: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1]
+    add: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/riscv64-unknown-linux-musl]
+    add: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/backward]
+    add: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include]
+    add: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include]
   end of search list found
-  collapse include dir [/usr/include/c++/11] ==> [/usr/include/c++/11]
-  collapse include dir [/usr/include/x86_64-linux-gnu/c++/11] ==> [/usr/include/x86_64-linux-gnu/c++/11]
-  collapse include dir [/usr/include/c++/11/backward] ==> [/usr/include/c++/11/backward]
-  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/11/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/include]
-  collapse include dir [/usr/local/include] ==> [/usr/local/include]
-  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
-  collapse include dir [/usr/include] ==> [/usr/include]
-  implicit include dirs: [/usr/include/c++/11;/usr/include/x86_64-linux-gnu/c++/11;/usr/include/c++/11/backward;/usr/lib/gcc/x86_64-linux-gnu/11/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+  collapse include dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include/c++/12.0.1]
+  collapse include dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/riscv64-unknown-linux-musl] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include/c++/12.0.1/riscv64-unknown-linux-musl]
+  collapse include dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/backward] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include/c++/12.0.1/backward]
+  collapse include dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include]
+  collapse include dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/include]
+  implicit include dirs: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include/c++/12.0.1;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include/c++/12.0.1/riscv64-unknown-linux-musl;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include/c++/12.0.1/backward;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/include]
 
 
 Parsed CXX implicit link information from above output:
-  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  link line regex: [^( *|.*[/\])(riscv64-unknown-linux-musl-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_167e9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_167e9.dir/build.make CMakeFiles/cmTC_167e9.dir/build]
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8bccf/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8bccf.dir/build.make CMakeFiles/cmTC_8bccf.dir/build]
   ignore line: [gmake[1]: Entering directory '/home/sgf/ws/k230_gesture_io/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Building CXX object CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++   -fopenmp -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -fopenmp -march=rv64imafdcv -mabi=lp64d -mcmodel=medany    -v -o CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp]
   ignore line: [Using built-in specs.]
-  ignore line: [COLLECT_GCC=/usr/bin/c++]
-  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
-  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.3' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+  ignore line: [COLLECT_GCC=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++]
+  ignore line: [Target: riscv64-unknown-linux-musl]
+  ignore line: [Configured with: /builds/canaan-creative/riscv-toolchain/gcc/configure --target=riscv64-unknown-linux-musl --prefix=/builds/canaan-creative/riscv-toolchain/install-native/ --with-sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --with-system-zlib --enable-shared --enable-tls --enable-languages=c c++ fortran --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libsanitizer --disable-nls --disable-bootstrap --src=/builds/canaan-creative/riscv-toolchain/gcc --disable-multilib --with-abi=lp64d --with-arch=rv64imafdcv --with-tune=rocket 'CFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d' 'CXXFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d']
   ignore line: [Thread model: posix]
-  ignore line: [Supported LTO compression algorithms: zlib zstd]
-  ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_167e9.dir/']
-  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_167e9.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cchx9omw.s]
-  ignore line: [GNU C++17 (Ubuntu 11.4.0-1ubuntu1~22.04.3) version 11.4.0 (x86_64-linux-gnu)]
-  ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 12.0.1 20220505 (prerelease) (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-mcmodel=medany' '-fopenmp' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_8bccf.dir/']
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/cc1plus -quiet -v -iprefix /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/ -D_GNU_SOURCE -D_REENTRANT /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_8bccf.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcmodel=medany -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -mtune=rocket -misa-spec=20191213 -march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b -version -fopenmp -o /tmp/cchIeb5n.s]
+  ignore line: [GNU C++17 (GCC) version 12.0.1 20220505 (prerelease) (riscv64-unknown-linux-musl)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [ignoring duplicate directory "/usr/include/x86_64-linux-gnu/c++/11"]
-  ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
-  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"]
-  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1"]
+  ignore line: [ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/riscv64-unknown-linux-musl"]
+  ignore line: [ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/backward"]
+  ignore line: [ignoring nonexistent directory "/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl/usr/local/include"]
+  ignore line: [ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include"]
+  ignore line: [ignoring nonexistent directory "/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl/usr/include"]
+  ignore line: [ignoring duplicate directory "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/../../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include"]
   ignore line: [#include "..." search starts here:]
   ignore line: [#include <...> search starts here:]
-  ignore line: [ /usr/include/c++/11]
-  ignore line: [ /usr/include/x86_64-linux-gnu/c++/11]
-  ignore line: [ /usr/include/c++/11/backward]
-  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/include]
-  ignore line: [ /usr/local/include]
-  ignore line: [ /usr/include/x86_64-linux-gnu]
-  ignore line: [ /usr/include]
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1]
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/riscv64-unknown-linux-musl]
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include/c++/12.0.1/backward]
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/include]
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/include]
   ignore line: [End of search list.]
-  ignore line: [GNU C++17 (Ubuntu 11.4.0-1ubuntu1~22.04.3) version 11.4.0 (x86_64-linux-gnu)]
-  ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: [GNU C++17 (GCC) version 12.0.1 20220505 (prerelease) (riscv64-unknown-linux-musl)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [Compiler executable checksum: ac7fa628ee459f217e6fdb88b3db0bde]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_167e9.dir/']
-  ignore line: [ as -v --64 -o CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o /tmp/cchx9omw.s]
-  ignore line: [GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.']
-  ignore line: [Linking CXX executable cmTC_167e9]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_167e9.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++  -v CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_167e9 ]
+  ignore line: [Compiler executable checksum: 2a7c4c9326bc576a073cebd355eeafab]
+  ignore line: [COLLECT_GCC_OPTIONS='-mcmodel=medany' '-fopenmp' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_8bccf.dir/']
+  ignore line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/as -v --traditional-format -march=rv64imafdcv -march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b -mabi=lp64d -misa-spec=20191213 -o CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cchIeb5n.s]
+  ignore line: [GNU assembler version 2.39 (riscv64-unknown-linux-musl) using BFD version (GNU Binutils) 2.39]
+  ignore line: [COMPILER_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/]
+  ignore line: [LIBRARY_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-mcmodel=medany' '-fopenmp' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [Linking CXX executable cmTC_8bccf]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8bccf.dir/link.txt --verbose=1]
+  ignore line: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++  -fopenmp -march=rv64imafdcv -mabi=lp64d -mcmodel=medany -fopenmp -march=rv64imafdcv -mabi=lp64d -mcmodel=medany   -v CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_8bccf ]
   ignore line: [Using built-in specs.]
-  ignore line: [COLLECT_GCC=/usr/bin/c++]
-  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper]
-  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
-  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.3' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-0odw26/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+  ignore line: [COLLECT_GCC=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper]
+  ignore line: [Target: riscv64-unknown-linux-musl]
+  ignore line: [Configured with: /builds/canaan-creative/riscv-toolchain/gcc/configure --target=riscv64-unknown-linux-musl --prefix=/builds/canaan-creative/riscv-toolchain/install-native/ --with-sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --with-system-zlib --enable-shared --enable-tls --enable-languages=c c++ fortran --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libsanitizer --disable-nls --disable-bootstrap --src=/builds/canaan-creative/riscv-toolchain/gcc --disable-multilib --with-abi=lp64d --with-arch=rv64imafdcv --with-tune=rocket 'CFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d' 'CXXFLAGS_FOR_TARGET=-O2   -mcmodel=medany -march=rv64imafdcv -mabi=lp64d']
   ignore line: [Thread model: posix]
-  ignore line: [Supported LTO compression algorithms: zlib zstd]
-  ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) ]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_167e9' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_167e9.']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccS0pdpE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_167e9 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/collect2] ==> ignore
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 12.0.1 20220505 (prerelease) (GCC) ]
+  ignore line: [COMPILER_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/bin/]
+  ignore line: [LIBRARY_PATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/:/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/]
+  ignore line: [Reading specs from /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/libgomp.spec]
+  ignore line: [COLLECT_GCC_OPTIONS='-mcmodel=medany' '-fopenmp' '-march=rv64imafdcv' '-mabi=lp64d' '-mcmodel=medany' '-v' '-o' 'cmTC_8bccf' '-shared-libgcc' '-mtune=rocket' '-misa-spec=20191213' '-march=rv64imafdcv_zicsr_zve32f_zve32x_zve64d_zve64f_zve64x_zvl128b_zvl32b_zvl64b' '-pthread' '-dumpdir' 'cmTC_8bccf.']
+  link line: [ /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/collect2 -plugin /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/liblto_plugin.so -plugin-opt=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccuEZnFh.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-latomic -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl --eh-frame-hdr -melf64lriscv -dynamic-linker /lib/ld-musl-riscv64.so.1 -o cmTC_8bccf /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1 -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc -L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgomp -lgcc_s -lgcc -lpthread -lc --push-state --as-needed -latomic --pop-state -lgcc_s -lgcc /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o /home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/collect2] ==> ignore
     arg [-plugin] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccS0pdpE.res] ==> ignore
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../libexec/gcc/riscv64-unknown-linux-musl/12.0.1/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccuEZnFh.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-latomic] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [--build-id] ==> ignore
+    arg [--sysroot=/builds/canaan-creative/riscv-toolchain/install-native//riscv64-unknown-linux-musl] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
-    arg [--hash-style=gnu] ==> ignore
-    arg [--as-needed] ==> ignore
+    arg [-melf64lriscv] ==> ignore
     arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-    arg [-pie] ==> ignore
-    arg [-znow] ==> ignore
-    arg [-zrelro] ==> ignore
+    arg [/lib/ld-musl-riscv64.so.1] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_167e9] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib]
-    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
-    arg [-L/lib/../lib] ==> dir [/lib/../lib]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
-    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..]
-    arg [CMakeFiles/cmTC_167e9.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [cmTC_8bccf] ==> ignore
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o]
+    arg [-L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1] ==> dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1]
+    arg [-L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc] ==> dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc]
+    arg [-L/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib] ==> dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib]
+    arg [CMakeFiles/cmTC_8bccf.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
+    arg [-lgomp] ==> lib [gomp]
     arg [-lgcc_s] ==> lib [gcc_s]
     arg [-lgcc] ==> lib [gcc]
+    arg [-lpthread] ==> lib [pthread]
     arg [-lc] ==> lib [c]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-latomic] ==> lib [atomic]
+    arg [--pop-state] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
     arg [-lgcc] ==> lib [gcc]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
-  collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
-  collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
-  collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11] ==> [/usr/lib/gcc/x86_64-linux-gnu/11]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> [/usr/lib]
-  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
-  collapse library dir [/lib/../lib] ==> [/lib]
-  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> [/usr/lib]
-  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
-  implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o]
+    arg [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o] ==> obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib/crt1.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib/crt1.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o]
+  collapse obj [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o]
+  collapse library dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1]
+  collapse library dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc]
+  collapse library dir [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/../lib/gcc/riscv64-unknown-linux-musl/12.0.1/../../../../riscv64-unknown-linux-musl/lib] ==> [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib]
+  implicit libs: [stdc++;m;gomp;gcc_s;gcc;pthread;c;atomic;gcc_s;gcc]
+  implicit objs: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib/crt1.o;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crti.o;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtbegin.o;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtend.o;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/crtn.o]
+  implicit dirs: [/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib]
   implicit fwks: []
 
 

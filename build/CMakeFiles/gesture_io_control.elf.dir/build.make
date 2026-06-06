@@ -69,95 +69,175 @@ include CMakeFiles/gesture_io_control.elf.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/gesture_io_control.elf.dir/flags.make
 
-CMakeFiles/gesture_io_control.elf.dir/src/main.cc.o: CMakeFiles/gesture_io_control.elf.dir/flags.make
-CMakeFiles/gesture_io_control.elf.dir/src/main.cc.o: ../src/main.cc
-CMakeFiles/gesture_io_control.elf.dir/src/main.cc.o: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/src/main.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/src/main.cc.o -MF CMakeFiles/gesture_io_control.elf.dir/src/main.cc.o.d -o CMakeFiles/gesture_io_control.elf.dir/src/main.cc.o -c /home/sgf/ws/k230_gesture_io/src/main.cc
+CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj: ../src/main.cc
+CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj -MF CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj.d -o CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj -c /home/sgf/ws/k230_gesture_io/src/main.cc
 
 CMakeFiles/gesture_io_control.elf.dir/src/main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gesture_io_control.elf.dir/src/main.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/src/main.cc > CMakeFiles/gesture_io_control.elf.dir/src/main.cc.i
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/src/main.cc > CMakeFiles/gesture_io_control.elf.dir/src/main.cc.i
 
 CMakeFiles/gesture_io_control.elf.dir/src/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gesture_io_control.elf.dir/src/main.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/src/main.cc -o CMakeFiles/gesture_io_control.elf.dir/src/main.cc.s
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/src/main.cc -o CMakeFiles/gesture_io_control.elf.dir/src/main.cc.s
 
-CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.o: CMakeFiles/gesture_io_control.elf.dir/flags.make
-CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.o: ../src/gesture_io_control.cc
-CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.o: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.o -MF CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.o.d -o CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.o -c /home/sgf/ws/k230_gesture_io/src/gesture_io_control.cc
+CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj: ../src/gesture_io_control.cc
+CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj -MF CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj.d -o CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj -c /home/sgf/ws/k230_gesture_io/src/gesture_io_control.cc
 
 CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/src/gesture_io_control.cc > CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.i
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/src/gesture_io_control.cc > CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.i
 
 CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/src/gesture_io_control.cc -o CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.s
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/src/gesture_io_control.cc -o CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.s
 
-CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.o: CMakeFiles/gesture_io_control.elf.dir/flags.make
-CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.o: /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc
-CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.o: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.o -MF CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.o.d -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.o -c /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc
+CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj: ../src/hand_detection.cc
+CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj -MF CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj.d -o CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj -c /home/sgf/ws/k230_gesture_io/src/hand_detection.cc
+
+CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.i"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/src/hand_detection.cc > CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.i
+
+CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.s"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/src/hand_detection.cc -o CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.s
+
+CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj: ../src/hand_keypoint.cc
+CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj -MF CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj.d -o CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj -c /home/sgf/ws/k230_gesture_io/src/hand_keypoint.cc
+
+CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.i"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/src/hand_keypoint.cc > CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.i
+
+CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.s"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/src/hand_keypoint.cc -o CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.s
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj: /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj -MF CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj.d -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj -c /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc
 
 CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc > CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.i
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc > CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.i
 
 CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.s
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.s
 
-CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.o: CMakeFiles/gesture_io_control.elf.dir/flags.make
-CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.o: /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc
-CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.o: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.o -MF CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.o.d -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.o -c /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj: /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj -MF CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj.d -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj -c /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc
 
 CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc > CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.i
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc > CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.i
 
 CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.s
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.s
 
-CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.o: CMakeFiles/gesture_io_control.elf.dir/flags.make
-CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.o: /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc
-CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.o: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.o -MF CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.o.d -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.o -c /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj: /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj -MF CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj.d -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj -c /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc
 
 CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc > CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.i
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc > CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.i
 
 CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.s
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.s
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj: /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj -MF CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj.d -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj -c /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.i"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c > CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.i
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.s"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.s
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj: /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj -MF CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj.d -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj -c /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.i"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c > CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.i
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.s"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.s
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj: CMakeFiles/gesture_io_control.elf.dir/flags.make
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj: /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj: CMakeFiles/gesture_io_control.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj -MF CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj.d -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj -c /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.i"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c > CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.i
+
+CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.s"
+	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c -o CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.s
 
 # Object files for target gesture_io_control.elf
 gesture_io_control_elf_OBJECTS = \
-"CMakeFiles/gesture_io_control.elf.dir/src/main.cc.o" \
-"CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.o" \
-"CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.o" \
-"CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.o" \
-"CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.o"
+"CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj" \
+"CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj" \
+"CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj" \
+"CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj" \
+"CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj" \
+"CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj" \
+"CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj" \
+"CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj" \
+"CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj" \
+"CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj"
 
 # External object files for target gesture_io_control.elf
 gesture_io_control_elf_EXTERNAL_OBJECTS =
 
-gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/src/main.cc.o
-gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.o
-gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.o
-gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.o
-gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.o
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj
+gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj
 gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/build.make
 gesture_io_control.elf: CMakeFiles/gesture_io_control.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable gesture_io_control.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable gesture_io_control.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gesture_io_control.elf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
