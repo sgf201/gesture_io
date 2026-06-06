@@ -30,6 +30,9 @@
 #include <memory>
 #include "ai_base.h"
 #include "ai_utils.h"
+#include "setting.h"
+#include "drv_gpio.h"
+#include "drv_fpioa.h"
 
 #define GPIO_PIN_LED1    11
 #define GPIO_PIN_LED2    12

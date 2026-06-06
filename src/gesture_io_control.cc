@@ -23,8 +23,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #include "gesture_io_control.h"
-#include "drv_gpio.h"
-#include "drv_fpioa.h"
 #include <iostream>
 #include <chrono>
 
@@ -36,7 +34,8 @@ GestureIOControl::GestureIOControl(const char *kmodel_file, int debug_mode)
       last_gesture_(GESTURE_NONE) {
     input_size_ = {input_shapes_[0][1], input_shapes_[0][2], input_shapes_[0][3]};
     ai2d_out_tensor_ = get_input_tensor(0);
-    ai2d_builder_ = std::make_unique<ai2d_builder>();
+    FrameCHWSize image_size = {AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH};
+    Utils::padding_resize_one_side_set(image_size, input_size_, ai2d_builder_, cv::Scalar(114, 114, 114));
 }
 
 GestureIOControl::~GestureIOControl() {
@@ -46,7 +45,7 @@ GestureIOControl::~GestureIOControl() {
 bool GestureIOControl::InitGPIO() {
     int ret;
     
-    ret = drv_fpioa_set_pin_func(GPIO_PIN_LED1, GPIO0 + GPIO_PIN_LED1);
+    ret = drv_fpioa_set_pin_func(GPIO_PIN_LED1, static_cast<fpioa_func_t>(GPIO0 + GPIO_PIN_LED1));
     if (ret != 0) return false;
     ret = drv_gpio_inst_create(GPIO_PIN_LED1, &gpio_led1_);
     if (ret != 0) return false;
@@ -54,7 +53,7 @@ bool GestureIOControl::InitGPIO() {
     if (ret != 0) return false;
     drv_gpio_value_set(gpio_led1_, GPIO_PV_LOW);
     
-    ret = drv_fpioa_set_pin_func(GPIO_PIN_LED2, GPIO0 + GPIO_PIN_LED2);
+    ret = drv_fpioa_set_pin_func(GPIO_PIN_LED2, static_cast<fpioa_func_t>(GPIO0 + GPIO_PIN_LED2));
     if (ret != 0) return false;
     ret = drv_gpio_inst_create(GPIO_PIN_LED2, &gpio_led2_);
     if (ret != 0) return false;
@@ -62,7 +61,7 @@ bool GestureIOControl::InitGPIO() {
     if (ret != 0) return false;
     drv_gpio_value_set(gpio_led2_, GPIO_PV_LOW);
     
-    ret = drv_fpioa_set_pin_func(GPIO_PIN_LED3, GPIO0 + GPIO_PIN_LED3);
+    ret = drv_fpioa_set_pin_func(GPIO_PIN_LED3, static_cast<fpioa_func_t>(GPIO0 + GPIO_PIN_LED3));
     if (ret != 0) return false;
     ret = drv_gpio_inst_create(GPIO_PIN_LED3, &gpio_led3_);
     if (ret != 0) return false;
@@ -70,7 +69,7 @@ bool GestureIOControl::InitGPIO() {
     if (ret != 0) return false;
     drv_gpio_value_set(gpio_led3_, GPIO_PV_LOW);
     
-    ret = drv_fpioa_set_pin_func(GPIO_PIN_RELAY, GPIO0 + GPIO_PIN_RELAY);
+    ret = drv_fpioa_set_pin_func(GPIO_PIN_RELAY, static_cast<fpioa_func_t>(GPIO0 + GPIO_PIN_RELAY));
     if (ret != 0) return false;
     ret = drv_gpio_inst_create(GPIO_PIN_RELAY, &gpio_relay_);
     if (ret != 0) return false;
@@ -103,8 +102,6 @@ void GestureIOControl::DeinitGPIO() {
 
 void GestureIOControl::pre_process(runtime_tensor &input_tensor) {
     ScopedTiming st("Gesture pre_process", debug_mode_);
-    FrameCHWSize image_size = {AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH};
-    Utils::padding_resize_one_side_set(image_size, input_size_, *ai2d_builder_, cv::Scalar(114, 114, 114));
     ai2d_builder_->invoke(input_tensor, ai2d_out_tensor_).expect("ai2d invoke failed");
 }
 
