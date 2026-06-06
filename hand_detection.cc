@@ -119,36 +119,57 @@ void HandDetection::pre_process(runtime_tensor& input_tensor)
         .map(map_access_::map_read).unwrap().buffer();
     uint8_t* src_data = reinterpret_cast<uint8_t*>(src_buf.data());
 
-    printf("[HD] src_data mapped, addr=%p\n", (void*)src_data);
+    printf("[HD] src_data mapped, size=%zu bytes\n", src_buf.size_bytes());
     fflush(stdout);
 
-    // 分配临时缓冲
+    // 计算目标大小
+    dims_t in_shape { 1, input_size_.channel, input_size_.height, input_size_.width };
     int dst_size = input_size_.width * input_size_.height * input_size_.channel;
-    std::vector<uint8_t> dst_buf(dst_size);
 
-    printf("[HD] Starting software resize...\n");
+    printf("[HD] model input requires %d bytes (1x%dx%dx%d)\n",
+           dst_size, input_size_.channel, input_size_.height, input_size_.width);
     fflush(stdout);
 
-    // 软件 resize + padding
-    software_resize_pad(src_data, image_size_.width, image_size_.height,
-                        dst_buf.data(), input_size_.width, input_size_.height);
-
-    printf("[HD] Software resize done, copying to model input tensor...\n");
+    // 先创建模型输入 tensor（由 NNCase 分配 KPU 可访问的内存）
+    printf("[HD] Creating model input tensor with pool_shared...\n");
     fflush(stdout);
 
-    // 将结果写入模型输入 tensor
-    auto out_buf = ai2d_out_tensor_.impl()->to_host().unwrap()
+    runtime_tensor model_input = host_runtime_tensor::create(
+        typecode_t::dt_uint8, in_shape, hrt::pool_shared)
+        .expect("cannot create model input tensor");
+
+    // 获取 tensor 的 CPU 可访问指针并写入 resize 后的数据
+    auto model_buf = model_input.impl()->to_host().unwrap()
         ->buffer().as_host().unwrap()
         .map(map_access_::map_write).unwrap().buffer();
-    memcpy(out_buf.data(), dst_buf.data(), dst_size);
+    uint8_t* model_data = reinterpret_cast<uint8_t*>(model_buf.data());
 
-    // 重要：同步缓存，确保 KPU 能看到数据
-    hrt::sync(ai2d_out_tensor_, sync_op_t::sync_write_back, true).expect("sync write_back failed");
+    printf("[HD] model tensor buffer: %p, size=%zu\n",
+           (void*)model_data, model_buf.size_bytes());
+    fflush(stdout);
+
+    printf("[HD] Running software resize...\n");
+    fflush(stdout);
+
+    // 软件 resize + padding 直接写入 tensor 内存
+    software_resize_pad(src_data, image_size_.width, image_size_.height,
+                        model_data, input_size_.width, input_size_.height);
+
+    printf("[HD] Syncing tensor to physical memory for KPU...\n");
+    fflush(stdout);
+
+    // 同步缓存到物理内存
+    hrt::sync(model_input, sync_op_t::sync_write_back, true)
+        .expect("sync write_back failed");
+
+    printf("[HD] Setting interpreter input tensor (index 0)...\n");
+    fflush(stdout);
+
+    // 显式设置为模型解释器的输入
+    set_input_tensor(0, model_input);
 
     printf("[HD] pre_process done\n");
     fflush(stdout);
-
-    // unmap 会在对象销毁时自动调用
 }
 
 void HandDetection::inference()
