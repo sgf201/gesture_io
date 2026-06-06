@@ -162,257 +162,161 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named gesture_io_control.elf
+# Target rules for targets named gesture_demo.elf
 
 # Build rule for target.
-gesture_io_control.elf: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gesture_io_control.elf
-.PHONY : gesture_io_control.elf
+gesture_demo.elf: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gesture_demo.elf
+.PHONY : gesture_demo.elf
 
 # fast build rule for target.
-gesture_io_control.elf/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/build
-.PHONY : gesture_io_control.elf/fast
+gesture_demo.elf/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/build
+.PHONY : gesture_demo.elf/fast
 
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.obj: home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.obj
-
-# target to build an object file
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.obj
-
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.i: home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.i
-
-# target to preprocess a source file
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.i
-
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.s: home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.s
-
-# target to generate assembly for a file
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.cc.s
-
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.obj: home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.obj
+common_files/ai_base.obj: common_files/ai_base.cc.obj
+.PHONY : common_files/ai_base.obj
 
 # target to build an object file
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.obj
+common_files/ai_base.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_base.cc.obj
+.PHONY : common_files/ai_base.cc.obj
 
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.i: home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.i
+common_files/ai_base.i: common_files/ai_base.cc.i
+.PHONY : common_files/ai_base.i
 
 # target to preprocess a source file
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.i
+common_files/ai_base.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_base.cc.i
+.PHONY : common_files/ai_base.cc.i
 
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.s: home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.s
+common_files/ai_base.s: common_files/ai_base.cc.s
+.PHONY : common_files/ai_base.s
 
 # target to generate assembly for a file
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.cc.s
+common_files/ai_base.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_base.cc.s
+.PHONY : common_files/ai_base.cc.s
 
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.obj: home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.obj
+common_files/ai_utils.obj: common_files/ai_utils.cc.obj
+.PHONY : common_files/ai_utils.obj
 
 # target to build an object file
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.obj
+common_files/ai_utils.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_utils.cc.obj
+.PHONY : common_files/ai_utils.cc.obj
 
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.i: home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.i
+common_files/ai_utils.i: common_files/ai_utils.cc.i
+.PHONY : common_files/ai_utils.i
 
 # target to preprocess a source file
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.i
+common_files/ai_utils.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_utils.cc.i
+.PHONY : common_files/ai_utils.cc.i
 
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.s: home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.s
+common_files/ai_utils.s: common_files/ai_utils.cc.s
+.PHONY : common_files/ai_utils.s
 
 # target to generate assembly for a file
-home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.cc.s
+common_files/ai_utils.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_utils.cc.s
+.PHONY : common_files/ai_utils.cc.s
 
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.obj: home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.obj
+common_files/video_pipeline.obj: common_files/video_pipeline.cc.obj
+.PHONY : common_files/video_pipeline.obj
 
 # target to build an object file
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.obj
+common_files/video_pipeline.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/video_pipeline.cc.obj
+.PHONY : common_files/video_pipeline.cc.obj
 
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.i: home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.i
+common_files/video_pipeline.i: common_files/video_pipeline.cc.i
+.PHONY : common_files/video_pipeline.i
 
 # target to preprocess a source file
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.i
+common_files/video_pipeline.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/video_pipeline.cc.i
+.PHONY : common_files/video_pipeline.cc.i
 
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.s: home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.s
+common_files/video_pipeline.s: common_files/video_pipeline.cc.s
+.PHONY : common_files/video_pipeline.s
 
 # target to generate assembly for a file
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.c.s
+common_files/video_pipeline.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/video_pipeline.cc.s
+.PHONY : common_files/video_pipeline.cc.s
 
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.obj: home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.obj
+hand_detection.obj: hand_detection.cc.obj
+.PHONY : hand_detection.obj
 
 # target to build an object file
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.obj
+hand_detection.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_detection.cc.obj
+.PHONY : hand_detection.cc.obj
 
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.i: home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.i
+hand_detection.i: hand_detection.cc.i
+.PHONY : hand_detection.i
 
 # target to preprocess a source file
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.i
+hand_detection.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_detection.cc.i
+.PHONY : hand_detection.cc.i
 
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.s: home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.s
+hand_detection.s: hand_detection.cc.s
+.PHONY : hand_detection.s
 
 # target to generate assembly for a file
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.c.s
+hand_detection.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_detection.cc.s
+.PHONY : hand_detection.cc.s
 
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.obj: home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.obj
+hand_keypoint.obj: hand_keypoint.cc.obj
+.PHONY : hand_keypoint.obj
 
 # target to build an object file
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.obj
+hand_keypoint.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_keypoint.cc.obj
+.PHONY : hand_keypoint.cc.obj
 
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.i: home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.i
+hand_keypoint.i: hand_keypoint.cc.i
+.PHONY : hand_keypoint.i
 
 # target to preprocess a source file
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.i
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.i
+hand_keypoint.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_keypoint.cc.i
+.PHONY : hand_keypoint.cc.i
 
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.s: home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.s
+hand_keypoint.s: hand_keypoint.cc.s
+.PHONY : hand_keypoint.s
 
 # target to generate assembly for a file
-home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.s
-.PHONY : home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.c.s
+hand_keypoint.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_keypoint.cc.s
+.PHONY : hand_keypoint.cc.s
 
-src/gesture_io_control.obj: src/gesture_io_control.cc.obj
-.PHONY : src/gesture_io_control.obj
+main.obj: main.cc.obj
+.PHONY : main.obj
 
 # target to build an object file
-src/gesture_io_control.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.obj
-.PHONY : src/gesture_io_control.cc.obj
+main.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/main.cc.obj
+.PHONY : main.cc.obj
 
-src/gesture_io_control.i: src/gesture_io_control.cc.i
-.PHONY : src/gesture_io_control.i
-
-# target to preprocess a source file
-src/gesture_io_control.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.i
-.PHONY : src/gesture_io_control.cc.i
-
-src/gesture_io_control.s: src/gesture_io_control.cc.s
-.PHONY : src/gesture_io_control.s
-
-# target to generate assembly for a file
-src/gesture_io_control.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/gesture_io_control.cc.s
-.PHONY : src/gesture_io_control.cc.s
-
-src/hand_detection.obj: src/hand_detection.cc.obj
-.PHONY : src/hand_detection.obj
-
-# target to build an object file
-src/hand_detection.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.obj
-.PHONY : src/hand_detection.cc.obj
-
-src/hand_detection.i: src/hand_detection.cc.i
-.PHONY : src/hand_detection.i
+main.i: main.cc.i
+.PHONY : main.i
 
 # target to preprocess a source file
-src/hand_detection.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.i
-.PHONY : src/hand_detection.cc.i
+main.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/main.cc.i
+.PHONY : main.cc.i
 
-src/hand_detection.s: src/hand_detection.cc.s
-.PHONY : src/hand_detection.s
-
-# target to generate assembly for a file
-src/hand_detection.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/hand_detection.cc.s
-.PHONY : src/hand_detection.cc.s
-
-src/hand_keypoint.obj: src/hand_keypoint.cc.obj
-.PHONY : src/hand_keypoint.obj
-
-# target to build an object file
-src/hand_keypoint.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.obj
-.PHONY : src/hand_keypoint.cc.obj
-
-src/hand_keypoint.i: src/hand_keypoint.cc.i
-.PHONY : src/hand_keypoint.i
-
-# target to preprocess a source file
-src/hand_keypoint.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.i
-.PHONY : src/hand_keypoint.cc.i
-
-src/hand_keypoint.s: src/hand_keypoint.cc.s
-.PHONY : src/hand_keypoint.s
+main.s: main.cc.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-src/hand_keypoint.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/hand_keypoint.cc.s
-.PHONY : src/hand_keypoint.cc.s
-
-src/main.obj: src/main.cc.obj
-.PHONY : src/main.obj
-
-# target to build an object file
-src/main.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/main.cc.obj
-.PHONY : src/main.cc.obj
-
-src/main.i: src/main.cc.i
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/main.cc.i
-.PHONY : src/main.cc.i
-
-src/main.s: src/main.cc.s
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_io_control.elf.dir/build.make CMakeFiles/gesture_io_control.elf.dir/src/main.cc.s
-.PHONY : src/main.cc.s
+main.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/main.cc.s
+.PHONY : main.cc.s
 
 # Help Target
 help:
@@ -426,37 +330,25 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... gesture_io_control.elf"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.obj"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.i"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_base.s"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.obj"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.i"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/ai_utils.s"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.obj"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.i"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/examples/ai/ai_demo/common_files/video_pipeline.s"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.obj"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.i"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/fpioa/drv_fpioa.s"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.obj"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.i"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/drivers/gpio/drv_gpio.s"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.obj"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.i"
-	@echo "... home/sgf/ws/k230_pangofly/src/rtsmart/libs/rtsmart_hal/utils/hal_utils.s"
-	@echo "... src/gesture_io_control.obj"
-	@echo "... src/gesture_io_control.i"
-	@echo "... src/gesture_io_control.s"
-	@echo "... src/hand_detection.obj"
-	@echo "... src/hand_detection.i"
-	@echo "... src/hand_detection.s"
-	@echo "... src/hand_keypoint.obj"
-	@echo "... src/hand_keypoint.i"
-	@echo "... src/hand_keypoint.s"
-	@echo "... src/main.obj"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... gesture_demo.elf"
+	@echo "... common_files/ai_base.obj"
+	@echo "... common_files/ai_base.i"
+	@echo "... common_files/ai_base.s"
+	@echo "... common_files/ai_utils.obj"
+	@echo "... common_files/ai_utils.i"
+	@echo "... common_files/ai_utils.s"
+	@echo "... common_files/video_pipeline.obj"
+	@echo "... common_files/video_pipeline.i"
+	@echo "... common_files/video_pipeline.s"
+	@echo "... hand_detection.obj"
+	@echo "... hand_detection.i"
+	@echo "... hand_detection.s"
+	@echo "... hand_keypoint.obj"
+	@echo "... hand_keypoint.i"
+	@echo "... hand_keypoint.s"
+	@echo "... main.obj"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

@@ -97,7 +97,7 @@ public:
      * @param results 后处理之后的基于原始图像的{检测框坐标点、得分和标签}集合
      * @return None
      */
-    void post_process(FrameCHWSize frame_size,std::vector<BoxInfo> &result);
+    void post_process(std::vector<BoxInfo> &result);
 
     std::vector<std::string> labels_ = {"hand"}; //模型输出类别名称
 

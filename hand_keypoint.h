@@ -96,6 +96,8 @@ public:
      */
     void post_process(Bbox &bbox);
 
+    void draw_result(cv::Mat &img, std::string text, Bbox &bbox);
+
     std::vector<int> results;
 
     /**

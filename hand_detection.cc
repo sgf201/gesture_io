@@ -53,14 +53,14 @@ void HandDetection::inference()
     this->get_output();
 }
 
-void HandDetection::post_process(FrameCHWSize frame_size,std::vector<BoxInfo> &result)
+void HandDetection::post_process(std::vector<BoxInfo> &result)
 {
     result.clear();
-    auto boxes0 = decode_infer(p_outputs_[0], 8, frame_size, anchors_0);
+    auto boxes0 = decode_infer(p_outputs_[0], 8, image_size_, anchors_0);
     result.insert(result.begin(), boxes0.begin(), boxes0.end());
-    auto boxes1 = decode_infer(p_outputs_[1], 16, frame_size, anchors_1);
+    auto boxes1 = decode_infer(p_outputs_[1], 16, image_size_, anchors_1);
     result.insert(result.begin(), boxes1.begin(), boxes1.end());
-    auto boxes2 = decode_infer(p_outputs_[2], 32, frame_size, anchors_2);
+    auto boxes2 = decode_infer(p_outputs_[2], 32, image_size_, anchors_2);
     result.insert(result.begin(), boxes2.begin(), boxes2.end());
     nms(result);
 }

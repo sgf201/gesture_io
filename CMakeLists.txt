@@ -1,83 +1,88 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.22.1)
+project(gesture_demo)
 
-project(gesture_io_control)
-
+# 设置C++标准
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_C_FLAGS_DEBUG "-O0 -g3")
-set(CMAKE_C_FLAGS_RELEASE "-O2 -s")
-set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g3")
-set(CMAKE_CXX_FLAGS_RELEASE "-O2 -s")
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fopenmp")
+# 设置工具链
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/Riscv64.cmake)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=rv64imafdcv -mabi=lp64d -mcmodel=medany")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=rv64imafdcv -mabi=lp64d -mcmodel=medany")
+# SDK路径设置 - 与SDK保持一致
+if(NOT DEFINED SDK_RTSMART_SRC_DIR)
+    set(SDK_RTSMART_SRC_DIR "/home/sgf/ws/k230_pangofly/src/rtsmart")
+endif()
 
-set(SDK_ROOT "${CMAKE_SOURCE_DIR}/../k230_pangofly/src/rtsmart")
-set(K230_ROOT "${CMAKE_SOURCE_DIR}/../k230_pangofly")
+# 设置环境变量（与SDK的build_app.sh保持一致）
+set(NNCASE_SRC_DIR "${SDK_RTSMART_SRC_DIR}/libs/nncase")
+set(OPENCV_SRC_DIR "${SDK_RTSMART_SRC_DIR}/libs/opencv")
+set(MPP_SRC_DIR "${SDK_RTSMART_SRC_DIR}/mpp")
 
-set(CMAKE_EXE_LINKER_FLAGS "-T ${SDK_ROOT}/examples/ai/ai_demo/cmake/link.lds --static -mcmodel=medany")
+# 设置链接脚本和静态链接
+set(CMAKE_EXE_LINKER_FLAGS "-T ${CMAKE_SOURCE_DIR}/cmake/link.lds --static")
 
-set(nncase_sdk_root "${SDK_ROOT}/libs/nncase/riscv64")
-include_directories(${nncase_sdk_root})
-include_directories(${nncase_sdk_root}/nncase/include)
-include_directories(${nncase_sdk_root}/nncase/include/nncase/runtime)
-include_directories(${nncase_sdk_root}/rvvlib/include)
-link_directories(${nncase_sdk_root}/nncase/lib/)
-link_directories(${nncase_sdk_root}/rvvlib/)
+# 设置库路径
+set(NNCASE_DIR "${NNCASE_SRC_DIR}/riscv64")
+set(NNCASE_INCLUDE_DIR "${NNCASE_DIR}/nncase/include")
+set(GSL_INCLUDE_DIR "${NNCASE_DIR}")
+set(OPENCV_INCLUDE_DIR "${OPENCV_SRC_DIR}/include/opencv4")
+set(RTSMART_HAL_INCLUDE_DIR "${SDK_RTSMART_SRC_DIR}/libs/rtsmart_hal/include")
+set(MPP_INCLUDE_DIR "${MPP_SRC_DIR}/include")
+set(MPP_COMM_INCLUDE_DIR "${MPP_SRC_DIR}/include/comm")
+set(MPP_API_INCLUDE_DIR "${MPP_SRC_DIR}/userapps/api")
+set(BSP_INCLUDE_DIR "${SDK_RTSMART_SRC_DIR}/rtsmart/kernel/bsp/maix3")
 
-set(k230_opencv "${SDK_ROOT}/libs/opencv")
-include_directories(${k230_opencv}/include/opencv4/)
-link_directories(${k230_opencv}/lib ${k230_opencv}/lib/opencv4/3rdparty)
+# 库文件路径
+set(NNCASE_LIBS_DIR "${NNCASE_DIR}/nncase/lib")
+set(RVV_LIBS_DIR "${NNCASE_DIR}/rvvlib")
+set(OPENCV_LIBS_DIR "${OPENCV_SRC_DIR}/lib")
+set(OPENCV_3RDPARTY_DIR "${OPENCV_SRC_DIR}/lib/opencv4/3rdparty")
+set(RTSMART_HAL_LIBS_DIR "${SDK_RTSMART_SRC_DIR}/libs/rtsmart_hal/build/lib")
+set(MPP_LIBS_DIR "${MPP_SRC_DIR}/userapps/lib")
+set(RTTHREAD_LIBS_DIR "${SDK_RTSMART_SRC_DIR}/rtsmart/userapps/sdk/rt-thread/lib/risc-v/rv64")
 
-include_directories(${SDK_ROOT}/libs/3rd-party/include)
-link_directories(${SDK_ROOT}/libs/3rd-party/lib)
+# 包含common_files目录
+set(common_files "${CMAKE_SOURCE_DIR}/common_files")
+include_directories(${common_files})
 
-set(k230_mpp_root "${SDK_ROOT}/mpp")
-include_directories(${k230_mpp_root}/userapps/api/)
-include_directories(${k230_mpp_root}/include)
-include_directories(${k230_mpp_root}/include/comm)
-link_directories(${k230_mpp_root}/userapps/lib)
-
-set(rtsmart_hal_root "${SDK_ROOT}/libs/rtsmart_hal")
-include_directories(${rtsmart_hal_root}/include)
-include_directories(${rtsmart_hal_root}/drivers/gpio)
-include_directories(${rtsmart_hal_root}/drivers/fpioa)
-include_directories(${rtsmart_hal_root}/drivers/timer)
-include_directories(${rtsmart_hal_root}/utils)
-include_directories(${K230_ROOT}/include)
-
-set(COMMON_FILES_PATH "${SDK_ROOT}/examples/ai/ai_demo/common_files")
-
-include_directories(${COMMON_FILES_PATH})
-include_directories(${PROJECT_SOURCE_DIR}/src)
-
-set(COMMON_SOURCES
-    ${COMMON_FILES_PATH}/ai_base.cc
-    ${COMMON_FILES_PATH}/ai_utils.cc
-    ${COMMON_FILES_PATH}/video_pipeline.cc
+# 设置common文件
+set(common_files_src
+    ${common_files}/ai_base.cc
+    ${common_files}/ai_utils.cc
+    ${common_files}/video_pipeline.cc
 )
 
-set(GPIO_SOURCES
-    ${rtsmart_hal_root}/drivers/gpio/drv_gpio.c
-    ${rtsmart_hal_root}/drivers/fpioa/drv_fpioa.c
-    ${rtsmart_hal_root}/utils/hal_utils.c
-)
+# 设置源文件
+set(src main.cc hand_detection.cc hand_keypoint.cc)
+set(all_src ${src} ${common_files_src})
+set(bin gesture_demo.elf)
 
-set(SOURCES
-    src/main.cc
-    src/gesture_io_control.cc
-    src/hand_detection.cc
-    src/hand_keypoint.cc
-)
+# 包含目录 - GSL必须在NNCASE之前
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${NNCASE_DIR})
+include_directories(${GSL_INCLUDE_DIR})
+include_directories(${NNCASE_INCLUDE_DIR})
+include_directories(${NNCASE_INCLUDE_DIR}/nncase/runtime)
+include_directories(${OPENCV_INCLUDE_DIR})
+include_directories(${RTSMART_HAL_INCLUDE_DIR})
+include_directories(${MPP_INCLUDE_DIR})
+include_directories(${MPP_COMM_INCLUDE_DIR})
+include_directories(${MPP_API_INCLUDE_DIR})
+include_directories(${BSP_INCLUDE_DIR})
 
-set(ALL_SOURCES ${SOURCES} ${COMMON_SOURCES} ${GPIO_SOURCES})
+# 添加链接库路径
+link_directories(${RVV_LIBS_DIR})
+link_directories(${NNCASE_LIBS_DIR})
+link_directories(${OPENCV_LIBS_DIR})
+link_directories(${OPENCV_3RDPARTY_DIR})
+link_directories(${RTSMART_HAL_LIBS_DIR})
+link_directories(${MPP_LIBS_DIR})
+link_directories(${RTTHREAD_LIBS_DIR})
 
-add_executable(gesture_io_control.elf ${ALL_SOURCES})
+add_executable(${bin} ${all_src})
 
-target_link_libraries(gesture_io_control.elf 
-    -Wl,--start-group 
+# 链接库（与SDK中的demo完全一致）
+target_link_libraries(${bin} -Wl,--start-group 
     rvv 
     Nncase.Runtime.Native 
     nncase.rt_modules.k230 
@@ -90,26 +95,21 @@ target_link_libraries(gesture_io_control.elf
     connector 
     sensor 
     atomic 
-    gsdma
-    gcc
-    -Wl,--end-group
-)
+    gsdma 
+    rtthread 
+    -Wl,--end-group)
 
-target_link_libraries(gesture_io_control.elf
-    -Wl,--start-group
-    opencv_imgcodecs
-    opencv_imgproc
-    opencv_core
-    zlib
-    libjpeg-turbo
-    libopenjp2
-    libpng
-    libtiff
-    libwebp
-    csi_cv
-    -Wl,--end-group
-)
+target_link_libraries(${bin} -Wl,--start-group 
+    opencv_imgcodecs 
+    opencv_imgproc 
+    opencv_core 
+    zlib 
+    libjpeg-turbo 
+    libopenjp2 
+    libpng 
+    libtiff 
+    libwebp 
+    csi_cv 
+    -Wl,--end-group)
 
-target_link_libraries(gesture_io_control.elf -latomic)
-
-install(TARGETS gesture_io_control.elf DESTINATION bin)
+install(TARGETS ${bin} DESTINATION bin)

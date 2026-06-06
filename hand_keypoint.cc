@@ -71,6 +71,69 @@ void HandKeypoint::post_process(Bbox &bbox)
     }
 }
 
+void HandKeypoint::draw_result(cv::Mat &img, std::string text, Bbox &bbox)
+{
+    ScopedTiming st(model_name_ + " draw_keypoints", debug_mode_);
+    int img_w = img.cols;
+    int img_h = img.rows;
+    int64_t output_tensor_size = output_shapes_[0][1];// 关键点输出 （x,y）*21= 42
+    std::vector<int>results_vd(output_tensor_size);
+
+    int x =  int(bbox.x / image_size_.width * img_w);
+    int y =  int(bbox.y / image_size_.height  * img_h);
+    int w = int((bbox.w) / image_size_.width * img_w);
+    int h = int((bbox.h) / image_size_.height  * img_h);
+    if(img.channels()==3){
+        cv::rectangle(img, cv::Rect( x,y,w,h ), cv::Scalar(0,0, 255), 4, 2, 0); 
+        cv::putText(img, text, cv::Point(x, y-20), cv::FONT_HERSHEY_SIMPLEX, 2, cv::Scalar(0, 255, 0), 1);
+    }
+    else{
+        cv::rectangle(img, cv::Rect( x,y,w,h ), cv::Scalar(0,0,255, 255), 4, 2, 0); 
+        cv::putText(img, text, cv::Point(x, y-20), cv::FONT_HERSHEY_SIMPLEX, 2, cv::Scalar(0, 255, 0,255), 1);
+    }
+
+    for (unsigned i = 0; i < output_tensor_size / 2; i++)
+    {
+        results_vd[i * 2] = static_cast<float>(results[i*2]) / image_size_.width * img_w;
+        results_vd[i * 2 + 1] = static_cast<float>(results[i*2+1]) / image_size_.height * img_h;
+        if(img.channels()==3){
+            cv::circle(img, cv::Point(results_vd[i * 2], results_vd[i * 2 + 1]), 4, cv::Scalar(155, 255, 255), 3);
+        }else{
+            cv::circle(img, cv::Point(results_vd[i * 2], results_vd[i * 2 + 1]), 4, cv::Scalar(155, 255, 255, 255), 4);
+        }
+        
+    }
+
+    for (unsigned k = 0; k < 5; k++)
+    {
+        int i = k*8;
+        unsigned char R = 255, G = 0, B = 0;
+
+        switch(k)
+        {
+            case 0:R = 255; G = 0; B = 0;break;
+            case 1:R = 255; G = 0; B = 255;break;
+            case 2:R = 255; G = 255; B = 0;break;
+            case 3:R = 0; G = 255; B = 0;break;
+            case 4:R = 0; G = 0; B = 255;break;
+            default: std::cout << "error" << std::endl;
+        }
+
+        if(img.channels()==3){
+            cv::line(img, cv::Point(results[0], results[1]), cv::Point(results[i + 2], results[i + 3]), cv::Scalar(B,G,R), 2, cv::LINE_AA);
+            cv::line(img, cv::Point(results[i + 2], results[i + 3]), cv::Point(results[i + 4], results[i + 5]), cv::Scalar(B, G, R), 2, cv::LINE_AA);
+            cv::line(img, cv::Point(results[i + 4], results[i + 5]), cv::Point(results[i + 6], results[i + 7]), cv::Scalar(B, G, R), 2, cv::LINE_AA);
+            cv::line(img, cv::Point(results[i + 6], results[i + 7]), cv::Point(results[i + 8], results[i + 9]), cv::Scalar(B, G, R), 2, cv::LINE_AA);
+        }
+        else{
+            cv::line(img, cv::Point(results_vd[0], results_vd[1]), cv::Point(results_vd[i + 2], results_vd[i + 3]), cv::Scalar(B,G,R,255), 2, cv::LINE_AA);
+            cv::line(img, cv::Point(results_vd[i + 2], results_vd[i + 3]), cv::Point(results_vd[i + 4], results_vd[i + 5]), cv::Scalar(B, G, R,255), 2, cv::LINE_AA);
+            cv::line(img, cv::Point(results_vd[i + 4], results_vd[i + 5]), cv::Point(results_vd[i + 6], results_vd[i + 7]), cv::Scalar(B, G, R,255), 2, cv::LINE_AA);
+            cv::line(img, cv::Point(results_vd[i + 6], results_vd[i + 7]), cv::Point(results_vd[i + 8], results_vd[i + 9]), cv::Scalar(B, G, R,255), 2, cv::LINE_AA);
+        }
+    }
+}
+
 double HandKeypoint::vector_2d_angle(std::vector<double> v1, std::vector<double> v2)
 {
     double v1_x = v1[0];
