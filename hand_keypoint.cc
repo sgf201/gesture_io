@@ -23,6 +23,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #include "hand_keypoint.h"
+#include <string.h>
+#include <vector>
 
 HandKeypoint::HandKeypoint(char *kmodel_file, FrameCHWSize image_size, int debug_mode)
 : AIBase(kmodel_file,"HandKeypoint", debug_mode)
@@ -37,11 +39,88 @@ HandKeypoint::~HandKeypoint()
 {
 }
 
-void HandKeypoint::pre_process(runtime_tensor& input_tensor,Bbox &bbox)
+void HandKeypoint::pre_process(runtime_tensor& input_tensor, Bbox &bbox)
 {
-    ScopedTiming st(model_name_ + " pre_process image", debug_mode_);
-    Utils::crop_resize_set(image_size_,input_size_,bbox.x,bbox.y,bbox.w,bbox.h,ai2d_builder_);
-    ai2d_builder_->invoke(input_tensor,ai2d_out_tensor_).expect("error occurred in ai2d running");   
+    printf("[HKP] pre_process: crop=(%d,%d,%d,%d) -> resize=%dx%d\n",
+           bbox.x, bbox.y, bbox.w, bbox.h, input_size_.width, input_size_.height);
+    fflush(stdout);
+
+    // 获取输入帧数据
+    auto src_buf = input_tensor.impl()->to_host().unwrap()
+        ->buffer().as_host().unwrap()
+        .map(map_access_::map_read).unwrap().buffer();
+    uint8_t* src_data = reinterpret_cast<uint8_t*>(src_buf.data());
+
+    int src_w = image_size_.width;
+    int src_h = image_size_.height;
+    int dst_w = input_size_.width;
+    int dst_h = input_size_.height;
+
+    // 计算裁剪区域（边界检查）
+    int cx = std::max(0, (int)std::min((float)src_w - 1, bbox.x));
+    int cy = std::max(0, (int)std::min((float)src_h - 1, bbox.y));
+    int cw = std::min((int)bbox.w, src_w - cx);
+    int ch = std::min((int)bbox.h, src_h - cy);
+
+    int dst_size = dst_w * dst_h * input_size_.channel;
+    std::vector<uint8_t> dst_buf(dst_size);
+
+    // 先用114填充
+    memset(dst_buf.data(), 114, dst_size);
+
+    if (cw > 0 && ch > 0) {
+        // 软件 crop + resize（双线性插值）
+        float ratio_x = (float)cw / dst_w;
+        float ratio_y = (float)ch / dst_h;
+
+        for (int c = 0; c < 3; c++) {
+            const uint8_t* src_plane = src_data + c * src_w * src_h;
+            uint8_t* dst_plane = dst_buf.data() + c * dst_w * dst_h;
+
+            for (int dy = 0; dy < dst_h; dy++) {
+                float src_y = cy + (dy + 0.5f) * ratio_y - 0.5f;
+                if (src_y < cy) src_y = cy;
+                if (src_y > cy + ch - 1) src_y = cy + ch - 1;
+                int y0 = (int)src_y;
+                int y1 = y0 + 1;
+                if (y1 > cy + ch - 1) y1 = cy + ch - 1;
+                float y_frac = src_y - y0;
+
+                for (int dx = 0; dx < dst_w; dx++) {
+                    float src_x = cx + (dx + 0.5f) * ratio_x - 0.5f;
+                    if (src_x < cx) src_x = cx;
+                    if (src_x > cx + cw - 1) src_x = cx + cw - 1;
+                    int x0 = (int)src_x;
+                    int x1 = x0 + 1;
+                    if (x1 > cx + cw - 1) x1 = cx + cw - 1;
+                    float x_frac = src_x - x0;
+
+                    float v00 = src_plane[y0 * src_w + x0];
+                    float v01 = src_plane[y0 * src_w + x1];
+                    float v10 = src_plane[y1 * src_w + x0];
+                    float v11 = src_plane[y1 * src_w + x1];
+
+                    float v0 = v00 * (1 - x_frac) + v01 * x_frac;
+                    float v1 = v10 * (1 - x_frac) + v11 * x_frac;
+                    float v = v0 * (1 - y_frac) + v1 * y_frac;
+
+                    if (v < 0) v = 0;
+                    if (v > 255) v = 255;
+
+                    dst_plane[dy * dst_w + dx] = (uint8_t)v;
+                }
+            }
+        }
+    }
+
+    printf("[HKP] crop_resize done, writing to model input tensor...\n");
+    fflush(stdout);
+
+    // 将结果写入模型输入 tensor
+    auto out_buf = ai2d_out_tensor_.impl()->to_host().unwrap()
+        ->buffer().as_host().unwrap()
+        .map(map_access_::map_write).unwrap().buffer();
+    memcpy(out_buf.data(), dst_buf.data(), dst_size);
 }
 
 void HandKeypoint::inference()

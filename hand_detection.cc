@@ -24,16 +24,21 @@
  */
 #include "hand_detection.h"
 #include <vector>
+#include <string.h>
 
 HandDetection::HandDetection(char *kmodel_file, float obj_thresh, float nms_thresh, FrameCHWSize image_size, int debug_mode)
-: obj_thresh_(obj_thresh), nms_thresh_(nms_thresh),AIBase(kmodel_file,"HandDetection", debug_mode)
+: obj_thresh_(obj_thresh), nms_thresh_(nms_thresh), AIBase(kmodel_file,"HandDetection", debug_mode)
 {
     model_name_ = "HandDetection";
     classes_num_ = 1;
     image_size_ = image_size;
-    input_size_ = {input_shapes_[0][1], input_shapes_[0][2],input_shapes_[0][3]};
+    input_size_ = {input_shapes_[0][1], input_shapes_[0][2], input_shapes_[0][3]};
     ai2d_out_tensor_ = get_input_tensor(0);
-    Utils::padding_resize_two_side_set(image_size_, input_size_,ai2d_builder_, cv::Scalar(114, 114, 114));
+
+    printf("[HD_INIT] image_size: %dx%dx%d, model_input: %dx%dx%d\n",
+           image_size_.channel, image_size_.height, image_size_.width,
+           input_size_.channel, input_size_.height, input_size_.width);
+    fflush(stdout);
 }
 
 
@@ -41,16 +46,118 @@ HandDetection::~HandDetection()
 {
 }
 
+// 软件方式：将 RGB planar 图像 resize + padding 到模型输入尺寸
+// 输入: src_data - RGB planar (CHW), src_w x src_h
+// 输出: dst_data - RGB planar (CHW), dst_w x dst_h, padding用114填充
+static void software_resize_pad(const uint8_t* src_data, int src_w, int src_h,
+                                 uint8_t* dst_data, int dst_w, int dst_h)
+{
+    // 计算缩放比例（保持宽高比）
+    float ratiow = (float)dst_w / src_w;
+    float ratioh = (float)dst_h / src_h;
+    float ratio = (ratiow < ratioh) ? ratiow : ratioh;
+
+    int new_w = (int)(src_w * ratio);
+    int new_h = (int)(src_h * ratio);
+    int pad_left = (dst_w - new_w) / 2;
+    int pad_top = (dst_h - new_h) / 2;
+
+    // 先用114填充整个目标区域
+    memset(dst_data, 114, dst_w * dst_h * 3);
+
+    // 双线性插值 resize
+    for (int c = 0; c < 3; c++) {
+        const uint8_t* src_plane = src_data + c * src_w * src_h;
+        uint8_t* dst_plane = dst_data + c * dst_w * dst_h;
+
+        for (int dy = 0; dy < new_h; dy++) {
+            float src_y = (dy + 0.5f) / ratio - 0.5f;
+            if (src_y < 0) src_y = 0;
+            if (src_y > src_h - 1) src_y = src_h - 1;
+            int y0 = (int)src_y;
+            int y1 = y0 + 1;
+            if (y1 > src_h - 1) y1 = src_h - 1;
+            float y_frac = src_y - y0;
+
+            for (int dx = 0; dx < new_w; dx++) {
+                float src_x = (dx + 0.5f) / ratio - 0.5f;
+                if (src_x < 0) src_x = 0;
+                if (src_x > src_w - 1) src_x = src_w - 1;
+                int x0 = (int)src_x;
+                int x1 = x0 + 1;
+                if (x1 > src_w - 1) x1 = src_w - 1;
+                float x_frac = src_x - x0;
+
+                float v00 = src_plane[y0 * src_w + x0];
+                float v01 = src_plane[y0 * src_w + x1];
+                float v10 = src_plane[y1 * src_w + x0];
+                float v11 = src_plane[y1 * src_w + x1];
+
+                float v0 = v00 * (1 - x_frac) + v01 * x_frac;
+                float v1 = v10 * (1 - x_frac) + v11 * x_frac;
+                float v = v0 * (1 - y_frac) + v1 * y_frac;
+
+                if (v < 0) v = 0;
+                if (v > 255) v = 255;
+
+                dst_plane[(pad_top + dy) * dst_w + (pad_left + dx)] = (uint8_t)v;
+            }
+        }
+    }
+}
+
 void HandDetection::pre_process(runtime_tensor& input_tensor)
 {
-    ScopedTiming st(model_name_ + " pre_process image", debug_mode_);
-    ai2d_builder_->invoke(input_tensor,ai2d_out_tensor_).expect("error occurred in ai2d running");   
+    printf("[HD] pre_process start: %dx%d -> %dx%d\n",
+           image_size_.width, image_size_.height,
+           input_size_.width, input_size_.height);
+    fflush(stdout);
+
+    // 获取输入帧数据（来自 VICAP）
+    auto src_buf = input_tensor.impl()->to_host().unwrap()
+        ->buffer().as_host().unwrap()
+        .map(map_access_::map_read).unwrap().buffer();
+    uint8_t* src_data = reinterpret_cast<uint8_t*>(src_buf.data());
+
+    printf("[HD] src_data mapped, addr=%p\n", (void*)src_data);
+    fflush(stdout);
+
+    // 分配临时缓冲
+    int dst_size = input_size_.width * input_size_.height * input_size_.channel;
+    std::vector<uint8_t> dst_buf(dst_size);
+
+    printf("[HD] Starting software resize...\n");
+    fflush(stdout);
+
+    // 软件 resize + padding
+    software_resize_pad(src_data, image_size_.width, image_size_.height,
+                        dst_buf.data(), input_size_.width, input_size_.height);
+
+    printf("[HD] Software resize done, copying to model input tensor...\n");
+    fflush(stdout);
+
+    // 将结果写入模型输入 tensor
+    auto out_buf = ai2d_out_tensor_.impl()->to_host().unwrap()
+        ->buffer().as_host().unwrap()
+        .map(map_access_::map_write).unwrap().buffer();
+    memcpy(out_buf.data(), dst_buf.data(), dst_size);
+
+    printf("[HD] pre_process done\n");
+    fflush(stdout);
+
+    // unmap 会在对象销毁时自动调用
 }
 
 void HandDetection::inference()
 {
+    printf("[HD] Running model inference...\n");
+    fflush(stdout);
     this->run();
+    printf("[HD] Inference done, getting output...\n");
+    fflush(stdout);
     this->get_output();
+    printf("[HD] Output retrieved\n");
+    fflush(stdout);
 }
 
 void HandDetection::post_process(std::vector<BoxInfo> &result)

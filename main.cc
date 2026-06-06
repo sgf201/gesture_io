@@ -89,7 +89,14 @@ void video_proc(char *argv[])
     int frame_count = 0;
 
     while(!isp_stop){
+        printf("[LOOP] Frame %d: Calling GetFrame...\n", frame_count + 1);
+        fflush(stdout);
+
         pl.GetFrame(dump_res);
+
+        printf("[LOOP] Frame %d: GetFrame returned virt_addr=0x%lx, phy_addr=0x%lx\n",
+               frame_count + 1, (unsigned long)dump_res.virt_addr, (unsigned long)dump_res.phy_addr);
+        fflush(stdout);
 
         if (dump_res.virt_addr == 0) {
             printf("[ERROR] Frame %d: GetFrame returned invalid address, skipping\n", frame_count + 1);
@@ -98,13 +105,34 @@ void video_proc(char *argv[])
             continue;
         }
 
+        printf("[LOOP] Frame %d: Creating input tensor...\n", frame_count + 1);
+        fflush(stdout);
+
         input_tensor = host_runtime_tensor::create(typecode_t::dt_uint8, in_shape, { (gsl::byte *)dump_res.virt_addr, compute_size(in_shape) },false, hrt::pool_shared, dump_res.phy_addr).expect("cannot create input tensor");
+
+        printf("[LOOP] Frame %d: Syncing tensor...\n", frame_count + 1);
+        fflush(stdout);
+
         hrt::sync(input_tensor, sync_op_t::sync_write_back, true).expect("sync write_back failed");
+
+        printf("[LOOP] Frame %d: Running hand detection pre_process...\n", frame_count + 1);
+        fflush(stdout);
 
         results.clear();
         hd.pre_process(input_tensor);
+
+        printf("[LOOP] Frame %d: Running hand detection inference...\n", frame_count + 1);
+        fflush(stdout);
+
         hd.inference();
+
+        printf("[LOOP] Frame %d: Running hand detection post_process...\n", frame_count + 1);
+        fflush(stdout);
+
         hd.post_process(results);
+
+        printf("[LOOP] Frame %d: Hand detection done, found %zu hands\n", frame_count + 1, results.size());
+        fflush(stdout);
 
         frame_count++;
 
