@@ -142,6 +142,9 @@ void HandDetection::pre_process(runtime_tensor& input_tensor)
         .map(map_access_::map_write).unwrap().buffer();
     memcpy(out_buf.data(), dst_buf.data(), dst_size);
 
+    // 重要：同步缓存，确保 KPU 能看到数据
+    hrt::sync(ai2d_out_tensor_, sync_op_t::sync_write_back, true).expect("sync write_back failed");
+
     printf("[HD] pre_process done\n");
     fflush(stdout);
 
@@ -152,10 +155,17 @@ void HandDetection::inference()
 {
     printf("[HD] Running model inference...\n");
     fflush(stdout);
-    this->run();
-    printf("[HD] Inference done, getting output...\n");
+
+    printf("[HD] Calling kmodel_interp_.run()...\n");
     fflush(stdout);
+
+    this->run();
+
+    printf("[HD] Inference completed, getting output...\n");
+    fflush(stdout);
+
     this->get_output();
+
     printf("[HD] Output retrieved\n");
     fflush(stdout);
 }
