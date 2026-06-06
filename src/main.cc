@@ -31,10 +31,16 @@
 using namespace std;
 
 void print_usage(const char *name) {
-    cout << "Usage: " << name << " <kmodel_path> [debug_mode]" << endl
+    cout << "Usage: " << name << " <kmodel_det> <obj_thresh> <nms_thresh> <kmodel_kp> <debug_mode>" << endl
          << "Options:" << endl
-         << "  kmodel_path      Path to gesture recognition kmodel" << endl
-         << "  debug_mode       0: no debug, 1: time only, 2: verbose (default: 1)" << endl
+         << "  kmodel_det       手部检测kmodel路径 (hand_det.kmodel)" << endl
+         << "  obj_thresh       手部检测阈值 (默认0.4)" << endl
+         << "  nms_thresh       手部检测NMS阈值 (默认0.4)" << endl
+         << "  kmodel_kp        手部关键点检测kmodel路径 (handkp_det.kmodel)" << endl
+         << "  debug_mode       0: 不调试, 1: 时间统计, 2: 详细调试 (默认1)" << endl
+         << endl
+         << "示例:" << endl
+         << "  " << name << " hand_det.kmodel 0.4 0.4 handkp_det.kmodel 1" << endl
          << endl;
 }
 
@@ -42,19 +48,25 @@ int main(int argc, char *argv[]) {
     cout << "Gesture IO Control Application" << endl;
     cout << "Built at: " << __DATE__ << " " << __TIME__ << endl;
     
-    if (argc < 2) {
+    if (argc < 5) {
         print_usage(argv[0]);
         return -1;
     }
     
-    const char* kmodel_path = argv[1];
-    int debug_mode = (argc > 2) ? atoi(argv[2]) : 1;
+    const char* kmodel_det = argv[1];
+    float obj_thresh = atof(argv[2]);
+    float nms_thresh = atof(argv[3]);
+    const char* kmodel_kp = argv[4];
+    int debug_mode = (argc > 5) ? atoi(argv[5]) : 1;
     
-    cout << "Kmodel path: " << kmodel_path << endl;
-    cout << "Debug mode: " << debug_mode << endl;
+    cout << "手部检测模型: " << kmodel_det << endl;
+    cout << "检测阈值: obj=" << obj_thresh << ", nms=" << nms_thresh << endl;
+    cout << "关键点检测模型: " << kmodel_kp << endl;
+    cout << "调试模式: " << debug_mode << endl;
     
     try {
-        GestureIOControl gesture_io(kmodel_path, debug_mode);
+        FrameCHWSize image_size = {AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH};
+        GestureIOControl gesture_io(kmodel_det, obj_thresh, nms_thresh, kmodel_kp, debug_mode);
         
         if (!gesture_io.InitGPIO()) {
             cerr << "Failed to initialize GPIO" << endl;
@@ -68,12 +80,17 @@ int main(int argc, char *argv[]) {
             return -1;
         }
         
-        FrameCHWSize image_size = {AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH};
         runtime_tensor input_tensor;
         dims_t in_shape = {1, AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH};
         DumpRes dump_res;
         
         cout << "Gesture IO Control started. Running..." << endl;
+        cout << "手势映射:" << endl
+             << "  FIST (握拳) -> LED1 ON" << endl
+             << "  PALM (手掌) -> LED2 ON" << endl
+             << "  FIVE (五指张开) -> LED3 ON" << endl
+             << "  YEAH (剪刀手) -> LED1+LED2 ON" << endl
+             << endl;
         
         while (true) {
             ScopedTiming st("Total frame time", 1);
@@ -88,7 +105,7 @@ int main(int argc, char *argv[]) {
             
             gesture_io.pre_process(input_tensor);
             gesture_io.inference();
-            GestureResult result = gesture_io.post_process();
+            GestureResult result = gesture_io.post_process(image_size);
             gesture_io.UpdateIO(result);
             
             pl.ReleaseFrame(dump_res);

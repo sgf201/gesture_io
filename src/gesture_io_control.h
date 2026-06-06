@@ -31,6 +31,8 @@
 #include "ai_base.h"
 #include "ai_utils.h"
 #include "setting.h"
+#include "hand_detection.h"
+#include "hand_keypoint.h"
 #include "drv_gpio.h"
 #include "drv_fpioa.h"
 
@@ -44,6 +46,7 @@ typedef enum {
     GESTURE_FIST,
     GESTURE_PALM,
     GESTURE_FIVE,
+    GESTURE_YEAH,
     GESTURE_SWIPE_LEFT,
     GESTURE_SWIPE_RIGHT,
     GESTURE_MAX
@@ -52,12 +55,14 @@ typedef enum {
 typedef struct {
     GestureType type;
     float confidence;
+    std::string gesture_name;
     int64_t timestamp;
 } GestureResult;
 
-class GestureIOControl : public AIBase {
+class GestureIOControl {
 public:
-    GestureIOControl(const char *kmodel_file, int debug_mode = 1);
+    GestureIOControl(const char *kmodel_det, float obj_thresh, float nms_thresh,
+                     const char *kmodel_kp, int debug_mode = 1);
     ~GestureIOControl();
 
     bool InitGPIO();
@@ -65,15 +70,14 @@ public:
     
     void pre_process(runtime_tensor &input_tensor);
     void inference();
-    GestureResult post_process();
+    GestureResult post_process(FrameCHWSize image_size);
     
     void UpdateIO(GestureResult result);
     void ResetIO();
     
 private:
-    std::unique_ptr<ai2d_builder> ai2d_builder_;
-    runtime_tensor ai2d_out_tensor_;
-    FrameCHWSize input_size_;
+    std::unique_ptr<HandDetection> hand_detection_;
+    std::unique_ptr<HandKeypoint> hand_keypoint_;
     
     drv_gpio_inst_t* gpio_led1_;
     drv_gpio_inst_t* gpio_led2_;
@@ -81,8 +85,10 @@ private:
     drv_gpio_inst_t* gpio_relay_;
     
     GestureType last_gesture_;
+    int debug_mode_;
 };
 
 const char* GestureTypeToString(GestureType type);
+GestureType StringToGestureType(const std::string& gesture_name);
 
 #endif

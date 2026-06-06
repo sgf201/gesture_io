@@ -28,14 +28,13 @@
 
 using namespace std;
 
-GestureIOControl::GestureIOControl(const char *kmodel_file, int debug_mode)
-    : AIBase(kmodel_file, "GestureRecognition", debug_mode),
-      gpio_led1_(nullptr), gpio_led2_(nullptr), gpio_led3_(nullptr), gpio_relay_(nullptr),
-      last_gesture_(GESTURE_NONE) {
-    input_size_ = {input_shapes_[0][1], input_shapes_[0][2], input_shapes_[0][3]};
-    ai2d_out_tensor_ = get_input_tensor(0);
+GestureIOControl::GestureIOControl(const char *kmodel_det, float obj_thresh, float nms_thresh,
+                                   const char *kmodel_kp, int debug_mode)
+    : gpio_led1_(nullptr), gpio_led2_(nullptr), gpio_led3_(nullptr), gpio_relay_(nullptr),
+      last_gesture_(GESTURE_NONE), debug_mode_(debug_mode) {
     FrameCHWSize image_size = {AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH};
-    Utils::padding_resize_one_side_set(image_size, input_size_, ai2d_builder_, cv::Scalar(114, 114, 114));
+    hand_detection_ = make_unique<HandDetection>((char*)kmodel_det, obj_thresh, nms_thresh, image_size, debug_mode);
+    hand_keypoint_ = make_unique<HandKeypoint>((char*)kmodel_kp, image_size, debug_mode);
 }
 
 GestureIOControl::~GestureIOControl() {
@@ -101,51 +100,73 @@ void GestureIOControl::DeinitGPIO() {
 }
 
 void GestureIOControl::pre_process(runtime_tensor &input_tensor) {
-    ScopedTiming st("Gesture pre_process", debug_mode_);
-    ai2d_builder_->invoke(input_tensor, ai2d_out_tensor_).expect("ai2d invoke failed");
+    hand_detection_->pre_process(input_tensor);
 }
 
 void GestureIOControl::inference() {
-    run();
-    get_output();
+    hand_detection_->inference();
 }
 
-GestureResult GestureIOControl::post_process() {
-    ScopedTiming st("Gesture post_process", debug_mode_);
+GestureResult GestureIOControl::post_process(FrameCHWSize image_size) {
     GestureResult result;
     result.timestamp = std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::system_clock::now().time_since_epoch()).count();
+    result.type = GESTURE_NONE;
+    result.confidence = 0.0f;
+    result.gesture_name = "none";
     
-    if (p_outputs_.empty() || !p_outputs_[0]) {
-        result.type = GESTURE_NONE;
-        result.confidence = 0.0f;
+    vector<BoxInfo> detection_results;
+    hand_detection_->post_process(image_size, detection_results);
+    
+    if (detection_results.empty()) {
+        if (debug_mode_ > 0) {
+            cout << "No hand detected" << endl;
+        }
         return result;
     }
     
-    float *output = p_outputs_[0];
-    int max_idx = 0;
-    float max_val = output[0];
-    
-    for (int i = 1; i < GESTURE_MAX; i++) {
-        if (output[i] > max_val) {
-            max_val = output[i];
-            max_idx = i;
+    for (auto r : detection_results) {
+        int w = r.x2 - r.x1 + 1;
+        int h = r.y2 - r.y1 + 1;
+        int length = std::max(w, h) / 2;
+        int cx = (r.x1 + r.x2) / 2;
+        int cy = (r.y1 + r.y2) / 2;
+        int ratio_num = 1.26 * length;
+        
+        int x1_1 = std::max(0, cx - ratio_num);
+        int y1_1 = std::max(0, cy - ratio_num);
+        int x2_1 = std::min(AI_FRAME_WIDTH - 1, cx + ratio_num);
+        int y2_1 = std::min(AI_FRAME_HEIGHT - 1, cy + ratio_num);
+        int w_1 = x2_1 - x1_1 + 1;
+        int h_1 = y2_1 - y1_1 + 1;
+        
+        struct Bbox bbox = {x: x1_1, y: y1_1, w: w_1, h: h_1};
+        
+        runtime_tensor dummy_tensor;
+        hand_keypoint_->pre_process(dummy_tensor, bbox);
+        hand_keypoint_->inference();
+        hand_keypoint_->post_process(bbox);
+        
+        std::vector<double> angle_list = hand_keypoint_->hand_angle();
+        std::string gesture = hand_keypoint_->h_gesture(angle_list);
+        
+        result.gesture_name = gesture;
+        result.type = StringToGestureType(gesture);
+        result.confidence = r.score;
+        
+        if (debug_mode_ > 0) {
+            cout << "Hand detected at [" << r.x1 << "," << r.y1 << "," << r.x2 << "," << r.y2 << "] "
+                 << "Gesture: " << gesture << " (score: " << r.score << ")" << endl;
         }
-    }
-    
-    result.type = static_cast<GestureType>(max_idx);
-    result.confidence = max_val;
-    
-    if (debug_mode_ > 0) {
-        cout << "Gesture detected: " << GestureTypeToString(result.type) 
-             << " (confidence: " << result.confidence << ")" << endl;
+        
+        break;
     }
     
     return result;
 }
 
 void GestureIOControl::UpdateIO(GestureResult result) {
-    if (result.confidence < 0.7f) {
+    if (result.type == GESTURE_NONE) {
         ResetIO();
         last_gesture_ = GESTURE_NONE;
         return;
@@ -170,6 +191,11 @@ void GestureIOControl::UpdateIO(GestureResult result) {
         case GESTURE_FIVE:
             drv_gpio_value_set(gpio_led3_, GPIO_PV_HIGH);
             cout << "Gesture: FIVE -> LED3 ON" << endl;
+            break;
+        case GESTURE_YEAH:
+            drv_gpio_value_set(gpio_led1_, GPIO_PV_HIGH);
+            drv_gpio_value_set(gpio_led2_, GPIO_PV_HIGH);
+            cout << "Gesture: YEAH -> LED1+LED2 ON" << endl;
             break;
         case GESTURE_SWIPE_LEFT:
             drv_gpio_value_set(gpio_relay_, GPIO_PV_HIGH);
@@ -198,8 +224,17 @@ const char* GestureTypeToString(GestureType type) {
         case GESTURE_FIST: return "fist";
         case GESTURE_PALM: return "palm";
         case GESTURE_FIVE: return "five";
+        case GESTURE_YEAH: return "yeah";
         case GESTURE_SWIPE_LEFT: return "swipe_left";
         case GESTURE_SWIPE_RIGHT: return "swipe_right";
         default: return "unknown";
     }
+}
+
+GestureType StringToGestureType(const std::string& gesture_name) {
+    if (gesture_name == "fist") return GESTURE_FIST;
+    if (gesture_name == "palm") return GESTURE_PALM;
+    if (gesture_name == "five") return GESTURE_FIVE;
+    if (gesture_name == "yeah") return GESTURE_YEAH;
+    return GESTURE_NONE;
 }

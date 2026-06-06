@@ -65,6 +65,8 @@ set(GPIO_SOURCES
 set(SOURCES
     src/main.cc
     src/gesture_io_control.cc
+    src/hand_detection.cc
+    src/hand_keypoint.cc
 )
 
 set(ALL_SOURCES ${SOURCES} ${COMMON_SOURCES} ${GPIO_SOURCES})
