@@ -1,4 +1,4 @@
-/* Copyright (c) 2023, Canaan Bright Sight Co., Ltd
+/* Copyright (c) 2025, Canaan Bright Sight Co., Ltd
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -23,17 +23,30 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #include <iostream>
-#include <chrono>
-#include <fstream>
 #include <thread>
-
-#include "ai_utils.h"
-#include "video_pipeline.h"
+#include "utils.h"
+#include "setting.h"
+#include "sensor_buf_manager.h"
 #include "hand_detection.h"
 #include "hand_keypoint.h"
 
+using std::cerr;
+using std::cout;
+using std::endl;
+using std::thread;
 
-std::atomic<bool> isp_stop(false);
+static std::mutex result_mutex;
+static vector<BoxInfo> hand_results;
+static vector<HandKeyPointInfo> hand_keypoint_results;
+std::atomic<bool> ai_stop(false);
+// 显示线程退出标志
+std::atomic<bool> display_stop(false);
+static volatile unsigned kpu_frame_count = 0;
+static struct timeval tv, tv2;
+// 显示实例和OSD缓冲区
+static struct display* display;
+struct display_buffer* draw_buffer;
+
 
 void print_usage(const char *name)
 {
@@ -44,144 +57,246 @@ void print_usage(const char *name)
          << "  obj_thresh      手掌检测阈值\n"
          << "  nms_thresh      手掌检测非极大值抑制阈值\n"
 		 << "  kmodel_kp       手势关键点检测kmodel路径\n"
-		 << "  debug_mode      是否需要调试，0、1、2分别表示不调试、简单调试、详细调试\n"
+		 << "  debug_mode      是否需要调试, 0、1、2分别表示不调试、简单调试、详细调试\n"
 		 << "\n"
 		 << endl;
 }
 
-void video_proc(char *argv[])
-{
-    printf("[VIDEO_PROC] Starting video processing thread...\n");
-    fflush(stdout);
+// zero copy, use less memory
+static void ai_proc(char *argv[], int video_device) {
+    struct v4l2_drm_context context;
+    struct v4l2_drm_video_buffer buffer;
+    #define BUFFER_NUM 3
 
-    int debug_mode = atoi(argv[6]);
-    FrameCHWSize image_size={AI_FRAME_CHANNEL,AI_FRAME_HEIGHT, AI_FRAME_WIDTH};
+    // wait display_proc running
+    result_mutex.lock();
+    result_mutex.unlock();
 
-    printf("[VIDEO_PROC] AI frame size: %dx%dx%d\n",
-           AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH);
-    fflush(stdout);
+    v4l2_drm_default_context(&context);
+    context.device = video_device;
+    context.display = false;
+    context.width = SENSOR_WIDTH;
+    context.height = SENSOR_HEIGHT;
+    context.video_format = v4l2_fourcc('B', 'G', '3', 'P');
+    context.buffer_num = BUFFER_NUM;
+    if (v4l2_drm_setup(&context, 1, NULL)) {
+        cerr << "v4l2_drm_setup error" << endl;
+        return;
+    }
+    if (v4l2_drm_start(&context)) {
+        cerr << "v4l2_drm_start error" << endl;
+        return;
+    }
 
-    runtime_tensor input_tensor;
-    dims_t in_shape { 1, AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH };
+    HandDetection hd(argv[1], atof(argv[3]), atof(argv[4]), {SENSOR_WIDTH, SENSOR_HEIGHT}, {SENSOR_CHANNEL, SENSOR_HEIGHT, SENSOR_WIDTH}, atoi(argv[6]));
+    HandKeypoint hk(argv[5], {SENSOR_CHANNEL, SENSOR_HEIGHT, SENSOR_WIDTH}, atoi(argv[6]));
 
-    printf("[VIDEO_PROC] Creating PipeLine...\n");
-    fflush(stdout);
+    // create tensors
+    std::vector<std::tuple<int, void*>> tensors;
+    for (unsigned i = 0; i < BUFFER_NUM; i++) {
+        tensors.push_back({context.buffers[i].fd, context.buffers[i].mmap});
+    }
+    SensorBufManager sensor_buf = SensorBufManager({SENSOR_CHANNEL, SENSOR_HEIGHT, SENSOR_WIDTH},tensors);
 
-    PipeLine pl(debug_mode);
-    pl.Create();
-
-    printf("[VIDEO_PROC] PipeLine created. Initializing AI models...\n");
-    printf("[VIDEO_PROC] Loading hand detection model: %s\n", argv[1]);
-    fflush(stdout);
-
-    DumpRes dump_res;
-    HandDetection hd(argv[1], atof(argv[3]), atof(argv[4]), image_size, debug_mode);
-
-    printf("[VIDEO_PROC] Hand detection model loaded. Loading keypoint model: %s\n", argv[5]);
-    fflush(stdout);
-
-    HandKeypoint hk(argv[5], image_size, debug_mode);
-
-    printf("[VIDEO_PROC] AI models loaded. Starting main loop...\n");
-    fflush(stdout);
-
-    std::vector<BoxInfo> results;
-    int frame_count = 0;
-
-    while(!isp_stop){
-        printf("[LOOP] Frame %d: Calling GetFrame...\n", frame_count + 1);
-        fflush(stdout);
-
-        pl.GetFrame(dump_res);
-
-        printf("[LOOP] Frame %d: GetFrame returned virt_addr=0x%lx, phy_addr=0x%lx\n",
-               frame_count + 1, (unsigned long)dump_res.virt_addr, (unsigned long)dump_res.phy_addr);
-        fflush(stdout);
-
-        if (dump_res.virt_addr == 0) {
-            printf("[ERROR] Frame %d: GetFrame returned invalid address, skipping\n", frame_count + 1);
-            fflush(stdout);
-            usleep(30000);
+    while (!ai_stop) {
+        int ret = v4l2_drm_dump(&context, 1000);
+        if (ret) {
+            perror("v4l2_drm_dump error");
             continue;
         }
-
-        printf("[LOOP] Frame %d: Creating input tensor...\n", frame_count + 1);
-        fflush(stdout);
-
-        input_tensor = host_runtime_tensor::create(typecode_t::dt_uint8, in_shape, { (gsl::byte *)dump_res.virt_addr, compute_size(in_shape) },false, hrt::pool_shared, dump_res.phy_addr).expect("cannot create input tensor");
-
-        printf("[LOOP] Frame %d: Syncing tensor...\n", frame_count + 1);
-        fflush(stdout);
-
-        hrt::sync(input_tensor, sync_op_t::sync_write_back, true).expect("sync write_back failed");
-
-        printf("[LOOP] Frame %d: Running hand detection pre_process...\n", frame_count + 1);
-        fflush(stdout);
-
-        results.clear();
-        hd.pre_process(input_tensor);
-
-        printf("[LOOP] Frame %d: Running hand detection inference...\n", frame_count + 1);
-        fflush(stdout);
-
+        runtime_tensor& img_data = sensor_buf.get_buf_for_index(context.vbuffer.index);
+        hd.pre_process(img_data);
         hd.inference();
+        result_mutex.lock();
+        hand_results.clear();
+        hd.post_process(hand_results);
 
-        printf("[LOOP] Frame %d: Running hand detection post_process...\n", frame_count + 1);
-        fflush(stdout);
-
-        hd.post_process(results);
-
-        printf("[LOOP] Frame %d: Hand detection done, found %zu hands\n", frame_count + 1, results.size());
-        fflush(stdout);
-
-        frame_count++;
-
-        if (frame_count % 30 == 0) {
-            printf("[FRAME] #%d: hands=%zu, virt_addr=0x%lx, phy_addr=0x%lx\n",
-                   frame_count, results.size(),
-                   (unsigned long)dump_res.virt_addr, (unsigned long)dump_res.phy_addr);
-            fflush(stdout);
-        } else if (results.size() > 0) {
-            printf("[FRAME] #%d: hands=%zu\n", frame_count, results.size());
-            fflush(stdout);
-        }
-
-        for (auto r: results)
+        hand_keypoint_results = std::vector<HandKeyPointInfo>{};
+        for (auto r: hand_results)
         {
             int w = r.x2 - r.x1 + 1;
             int h = r.y2 - r.y1 + 1;
+            
             int length = std::max(w,h)/2;
             int cx = (r.x1+r.x2)/2;
             int cy = (r.y1+r.y2)/2;
             int ratio_num = 1.26*length;
+
             int x1_1 = std::max(0,cx-ratio_num);
             int y1_1 = std::max(0,cy-ratio_num);
-            int x2_1 = std::min(image_size.width-1, cx+ratio_num);
-            int y2_1 = std::min(image_size.height-1, cy+ratio_num);
+            int x2_1 = std::min(SENSOR_WIDTH-1, cx+ratio_num);
+            int y2_1 = std::min(SENSOR_HEIGHT-1, cy+ratio_num);
             int w_1 = x2_1 - x1_1 + 1;
             int h_1 = y2_1 - y1_1 + 1;
-            Bbox bbox = {x:x1_1,y:y1_1,w:w_1,h:h_1};
-            hk.pre_process(input_tensor,bbox);
+            
+            struct Bbox bbox = {x:x1_1,y:y1_1,w:w_1,h:h_1};
+            hk.pre_process(img_data, bbox);
             hk.inference();
-            hk.post_process(bbox);
-            std::vector<double> angle_list = hk.hand_angle();
-            std::string gesture = hk.h_gesture(angle_list);
 
-            printf("[GESTURE] Frame #%d: %s (bbox: %d,%d %dx%d)\n",
-                   frame_count, gesture.c_str(), r.x1, r.y1, w, h);
-            fflush(stdout);
+            HandKeyPointInfo post_process_result;
+            hk.post_process(bbox, post_process_result);
+            hand_keypoint_results.push_back(post_process_result);
         }
-
-        pl.ReleaseFrame(dump_res);
+        result_mutex.unlock();
+        kpu_frame_count += 1;
+        v4l2_drm_dump_release(&context);
     }
-
-    printf("[VIDEO_PROC] Stop signal received. Cleaning up...\n");
-    fflush(stdout);
-    pl.Destroy();
-    printf("[VIDEO_PROC] Cleanup done.\n");
-    fflush(stdout);
+    v4l2_drm_stop(&context);
 }
 
+/**
+ * @brief V4L2-DRM 显示帧处理函数（每帧触发一次）
+ *
+ * 该函数由 v4l2_drm_run 驱动循环回调，在每一帧显示数据时被调用。主要功能用于显示AI推理的结果。
+ * @param context V4L2-DRM 上下文结构体指针
+ * @param displayed 表示该帧是否已经被实际显示
+ * @return 返回 0 表示正常，返回 'q' 表示请求退出主循环（受控于 display_stop 标志）
+ */
+int frame_handler(struct v4l2_drm_context *context, bool displayed) 
+{
+    static bool first_frame = true;
+    if (first_frame) {
+        result_mutex.unlock();
+        first_frame = false;
+    }
+
+    static unsigned response = 0, display_frame_count = 0;
+    response += 1;
+    if (displayed) 
+    {
+        if (context[0].buffer_hold[context[0].wp] >= 0) 
+        {
+            static struct display_buffer* last_drawed_buffer = nullptr;
+            auto buffer = context[0].display_buffers[context[0].buffer_hold[context[0].wp]];
+            if (buffer != last_drawed_buffer) {
+                if (draw_buffer->width > draw_buffer->height)
+                {
+                    // 创建临时 BGRA 显示缓冲Mat（用于画图）
+                    cv::Mat temp_img(draw_buffer->height, draw_buffer->width, CV_8UC4);
+                    // 横屏
+                    temp_img.setTo(cv::Scalar(0, 0, 0, 0));
+                    result_mutex.lock();
+                    for(int i=0;i<hand_results.size();++i)
+                    {
+                        HandKeypoint::draw_keypoints(temp_img, hand_results[i], hand_keypoint_results[i], false);
+                    }
+                    result_mutex.unlock();
+                    //---------------------- 显示缓冲同步 ----------------------
+                    // 将绘图图像复制到实际显示缓冲区
+                    memcpy(draw_buffer->map, temp_img.data, draw_buffer->size);
+                }
+                else
+                {
+                    // 创建临时 BGRA 显示缓冲Mat（用于画图）
+                    cv::Mat temp_img(draw_buffer->width, draw_buffer->height, CV_8UC4);
+                    // 横屏
+                    temp_img.setTo(cv::Scalar(0, 0, 0, 0));
+                    result_mutex.lock();
+                    for(int i=0;i<hand_results.size();++i)
+                    {
+                        HandKeypoint::draw_keypoints(temp_img, hand_results[i], hand_keypoint_results[i], false);
+                    }
+                    result_mutex.unlock();
+                    // 旋转回屏幕方向
+                    cv::rotate(temp_img, temp_img, cv::ROTATE_90_CLOCKWISE);
+                    //---------------------- 显示缓冲同步 ----------------------
+                    // 将绘图图像复制到实际显示缓冲区
+                    memcpy(draw_buffer->map, temp_img.data, draw_buffer->size);
+                }
+                last_drawed_buffer = buffer;
+                // flush cache
+                thead_csi_dcache_clean_invalid_range(buffer->map, buffer->size);
+                display_update_buffer(draw_buffer, 0, 0);
+            }
+        }
+        display_frame_count += 1;
+    }
+
+    // FPS counter
+    gettimeofday(&tv2, NULL);
+    uint64_t duration = 1000000 * (tv2.tv_sec - tv.tv_sec) + tv2.tv_usec - tv.tv_usec;
+    if (duration >= 1000000) {
+        fprintf(stderr, " poll: %.2f, ", response * 1000000. / duration);
+        response = 0;
+        if (display) {
+            fprintf(stderr, "display: %.2f, ", display_frame_count * 1000000. / duration);
+            display_frame_count = 0;
+        }
+        fprintf(stderr, "camera: %.2f, ", context[0].frame_count * 1000000. / duration);
+        context[0].frame_count = 0;
+        fprintf(stderr, "KPU: %.2f", kpu_frame_count * 1000000. / duration);
+        kpu_frame_count = 0;
+        fprintf(stderr, "          \r");
+        fflush(stderr);
+        gettimeofday(&tv, NULL);
+    }
+
+    // 若收到退出信号，返回 'q' 表示主循环退出
+    if (display_stop) {
+        return 'q';
+    }
+    return 0;
+}
+
+/**
+ * @brief 显示线程主函数，初始化 V4L2-DRM 并绑定绘制回调
+ *
+ * 根据屏幕方向（横屏 / 竖屏）配置对应的宽高、格式和旋转角度，
+ * 然后调用 `v4l2_drm_run()` 启动帧处理主循环，由 `frame_handler()` 每帧触发绘制。
+ *
+ * @param video_device 视频设备编号（如 /dev/video0 中的 1）
+ */
+void display_proc(int video_device) 
+{
+    struct v4l2_drm_context context;
+    v4l2_drm_default_context(&context);
+    context.device = video_device;
+    // 根据屏幕方向设置 width/height/rotation
+    if (display->width > display->height)
+    {
+        // 横屏
+        context.width = display->width;
+        context.height = (display->width * SENSOR_HEIGHT / SENSOR_WIDTH) & 0xfff8;
+        context.video_format = V4L2_PIX_FMT_NV12;
+        context.display_format = 0;
+        context.drm_rotation = rotation_0;
+    }
+    else 
+    {
+        // 竖屏
+        context.width = display->height;
+        context.height = display->width;
+        context.video_format = V4L2_PIX_FMT_NV12;
+        context.display_format = 0;
+        context.drm_rotation = rotation_90;
+    }
+
+    // 初始化 V4L2 + DRM 流
+    if (v4l2_drm_setup(&context, 1, &display)) {
+        std::cerr << "v4l2_drm_setup error" << std::endl;
+        return;
+    }
+
+    // 分配OSD显示 plane 和 buffer
+    struct display_plane* plane = display_get_plane(display, DRM_FORMAT_ARGB8888);
+    draw_buffer = display_allocate_buffer(plane, display->width, display->height);
+    display_commit_buffer(draw_buffer, 0, 0);
+
+    gettimeofday(&tv, NULL);
+    v4l2_drm_run(&context, 1, frame_handler);
+    // 清理资源
+    if (display) {
+        display_free_plane(plane);
+        display_exit(display);
+    }
+    return;
+}
+
+void __attribute__((destructor)) cleanup() {
+    std::cout << "Cleaning up memory..." << std::endl;
+    shrink_memory_pool();
+    kd_mpi_mmz_deinit();
+}
 
 int main(int argc, char *argv[])
 {
@@ -194,68 +309,85 @@ int main(int argc, char *argv[])
 
     if (strcmp(argv[2], "None") == 0)
     {
-        std::thread thread_isp(video_proc, argv);
-        while (getchar() != 'q')
-        {
-            usleep(10000);
+        display = display_init(0);
+        if (!display) {
+            cerr << "display_init error, exit" << endl;
+            return -1;
         }
 
-        isp_stop = true;
-        thread_isp.join();
+        // 锁住结果互斥量，等待首次帧到来后解锁
+        result_mutex.lock();
+
+        // 启动分类任务推理线程
+        std::thread ai_thread(ai_proc, argv, kd_mpi_get_vvcam_video00()+1);
+        // 启动显示线程（处理显示内容绘制）
+        std::thread display_thread(display_proc, kd_mpi_get_vvcam_video00());
+
+        // 输入提示信息
+        std::cout << "输入 'q'回车退出" << std::endl;
+
+        // 命令行输入处理主循环
+        std::string last_input = "";
+        while (true) {
+            std::string input;
+            std::getline(std::cin, input);  // 获取用户输入
+            if (input == "q") {
+                // 退出程序
+                display_stop.store(true); // 通知显示线程退出
+                usleep(100000);           // 稍作延迟，确保帧处理完成
+                ai_stop.store(true);      // 通知人脸线程退出
+                break;
+            }
+            else{
+                usleep(100000);
+            }
+        }
+
+        // 等待两个线程完成后退出程序
+        display_thread.join();
+        ai_thread.join();
     }
     else
-    {   
-        int debug_mode = atoi(argv[6]);
-        // 读取图片
+    {
         cv::Mat ori_img = cv::imread(argv[2]);
-        FrameCHWSize image_size={ori_img.channels(),ori_img.rows,ori_img.cols};
-         // 创建一个空的向量，用于存储chw图像数据,将读入的hwc数据转换成chw数据
-        std::vector<uint8_t> chw_vec;
-        std::vector<cv::Mat> bgrChannels(3);
-        cv::split(ori_img, bgrChannels);
-        for (auto i = 2; i > -1; i--)
-        {
-            std::vector<uint8_t> data = std::vector<uint8_t>(bgrChannels[i].reshape(1, 1));
-            chw_vec.insert(chw_vec.end(), data.begin(), data.end());
-        }
-        // 创建tensor
-        dims_t in_shape { 1, 3, ori_img.rows, ori_img.cols };
-        runtime_tensor input_tensor = host_runtime_tensor::create(typecode_t::dt_uint8, in_shape, hrt::pool_shared).expect("cannot create input tensor");
-        auto input_buf = input_tensor.impl()->to_host().unwrap()->buffer().as_host().unwrap().map(map_access_::map_write).unwrap().buffer();
-        memcpy(reinterpret_cast<char *>(input_buf.data()), chw_vec.data(), chw_vec.size());
-        hrt::sync(input_tensor, sync_op_t::sync_write_back, true).expect("write back input failed");
+        int origin_w = ori_img.cols;
+        int origin_h = ori_img.rows;
+        FrameSize handimg_size = {origin_w, origin_h};
 
-        HandDetection hd(argv[1], atof(argv[3]), atof(argv[4]), image_size, debug_mode);
-        HandKeypoint hk(argv[5], image_size,debug_mode);
-        std::vector<BoxInfo> results;
-        results.clear();
-        hd.pre_process(input_tensor);
+        HandDetection hd(argv[1], atof(argv[3]),atof(argv[4]), handimg_size, atoi(argv[6]));
+        HandKeypoint hk(argv[5], atoi(argv[6]));
+
+        hd.pre_process(ori_img);
         hd.inference();
-        hd.post_process(results);
-        for (auto r: results)
+        hd.post_process(hand_results);
+
+        for (auto r: hand_results)
         {
             int w = r.x2 - r.x1 + 1;
             int h = r.y2 - r.y1 + 1;
+            
             int length = std::max(w,h)/2;
             int cx = (r.x1+r.x2)/2;
             int cy = (r.y1+r.y2)/2;
             int ratio_num = 1.26*length;
+
             int x1_1 = std::max(0,cx-ratio_num);
             int y1_1 = std::max(0,cy-ratio_num);
-            int x2_1 = std::min(image_size.width-1, cx+ratio_num);
-            int y2_1 = std::min(image_size.height-1, cy+ratio_num);
+            int x2_1 = std::min(SENSOR_WIDTH-1, cx+ratio_num);
+            int y2_1 = std::min(SENSOR_HEIGHT-1, cy+ratio_num);
             int w_1 = x2_1 - x1_1 + 1;
             int h_1 = y2_1 - y1_1 + 1;
-            Bbox bbox = {x:x1_1,y:y1_1,w:w_1,h:h_1};
-            Bbox draw_box={r.x1,r.y1,(r.x2-r.x1),(r.y2-r.y1)};
-            hk.pre_process(input_tensor,bbox);
+            
+            struct Bbox bbox = {x:x1_1,y:y1_1,w:w_1,h:h_1};
+            hk.pre_process(ori_img, bbox);
             hk.inference();
-            hk.post_process(bbox);
-            std::vector<double> angle_list = hk.hand_angle();
-            std::string gesture = hk.h_gesture(angle_list);
-            hk.draw_result(ori_img,gesture,draw_box);
+
+            HandKeyPointInfo post_process_result;
+            hk.post_process(bbox, post_process_result);
+            hk.draw_keypoints(ori_img, r, post_process_result, true);
         }
-        cv::imwrite("hand_kp_class_result.jpg", ori_img);
+        
+        cv::imwrite("hand_keypoint_class_result.jpg", ori_img);
     }
     return 0;
 }

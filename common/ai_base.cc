@@ -1,4 +1,4 @@
-/* Copyright (c) 2023, Canaan Bright Sight Co., Ltd
+/* Copyright (c) 2025, Canaan Bright Sight Co., Ltd
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -23,21 +23,19 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #include "ai_base.h"
+
 #include <iostream>
 #include <cassert>
 #include <fstream>
 #include <string>
+
 #include <nncase/runtime/debug.h>
-#include "ai_utils.h"
+#include "utils.h"
 
 using std::cout;
 using std::endl;
 using namespace nncase;
-using namespace nncase::runtime;
-using namespace nncase::runtime::k230;
-using namespace nncase::F::k230;
 using namespace nncase::runtime::detail;
-
 
 AIBase::AIBase(const char *kmodel_file,const string model_name, const int debug_mode) : debug_mode_(debug_mode),model_name_(model_name)
 {
@@ -80,41 +78,42 @@ void AIBase::set_input_init()
         input_shapes_.push_back(in_shape);
         // DEFINE_TYPECODE(uint8,      u8,     0x06)
         // DEFINE_TYPECODE(float32,    f32,    0x0B)
-        // if (desc.datatype == dt_int8 || desc.datatype == dt_uint8)
-        // {
-        //     input_total_size += dsize;
-        // }
-        // else if (desc.datatype == dt_int16 || desc.datatype == dt_uint16 || desc.datatype == dt_float16 || desc.datatype == dt_bfloat16)
-        // {
-        //     input_total_size += (dsize * 2);
-        // }
-        // else if (desc.datatype == dt_int32 || desc.datatype == dt_uint32 || desc.datatype == dt_float32)
-        // {
-        //     input_total_size += (dsize * 4);
-        // }
-        // else if(desc.datatype == dt_int64 || desc.datatype == dt_uint64 || desc.datatype == dt_float64)
-        // {
-        //     input_total_size += (dsize * 8);
-        // }
-        // else
-        // {
-        //     printf("input data type:%d",desc.datatype);
-        //     assert(("unsupported kmodel output data type", 0));
-        // }
-        // each_input_size_by_byte_.push_back(input_total_size);
+        if (desc.datatype == dt_int8 || desc.datatype == dt_uint8)
+        {
+            input_total_size += dsize;
+        }
+        else if (desc.datatype == dt_int16 || desc.datatype == dt_uint16 || desc.datatype == dt_float16 || desc.datatype == dt_bfloat16)
+        {
+            input_total_size += (dsize * 2);
+        }
+        else if (desc.datatype == dt_int32 || desc.datatype == dt_uint32 || desc.datatype == dt_float32)
+        {
+            input_total_size += (dsize * 4);
+        }
+        else if(desc.datatype == dt_int64 || desc.datatype == dt_uint64 || desc.datatype == dt_float64)
+        {
+            input_total_size += (dsize * 8);
+        }
+        else
+        {
+            printf("input data type:%d",desc.datatype);
+            assert(("unsupported kmodel output data type", 0));
+        }
+        each_input_size_by_byte_.push_back(input_total_size);
 
     }
-    // each_input_size_by_byte_.push_back(input_total_size); // 最后一个保存总大小
+    each_input_size_by_byte_.push_back(input_total_size); // 最后一个保存总大小
+}
+
+void AIBase::set_input_tensor(size_t idx, runtime_tensor &tensor)
+{
+    ScopedTiming st(model_name_ + " set_input_tensor", debug_mode_);
+    kmodel_interp_.input_tensor(idx, tensor).expect("cannot set input tensor");
 }
 
 runtime_tensor AIBase::get_input_tensor(size_t idx)
 {
     return kmodel_interp_.input_tensor(idx).expect("cannot get input tensor");
-}
-
-void AIBase::set_input_tensor(size_t idx,runtime_tensor &input_tensor){
-    // set input
-    kmodel_interp_.input_tensor(idx, input_tensor).expect("cannot set input tensor");
 }
 
 void AIBase::set_output_init()
@@ -141,30 +140,31 @@ void AIBase::set_output_init()
         if (debug_mode_ > 1)
             cout << endl;
         output_shapes_.push_back(out_shape);
-        // if (desc.datatype == dt_int8 || desc.datatype == dt_uint8)
-        // {
-        //     output_total_size += dsize;
-        // }
-        // else if (desc.datatype == dt_int16 || desc.datatype == dt_uint16 || desc.datatype == dt_float16 || desc.datatype == dt_bfloat16)
-        // {
-        //     output_total_size += (dsize * 2);
-        // }
-        // else if (desc.datatype == dt_int32 || desc.datatype == dt_uint32 || desc.datatype == dt_float32)
-        // {
-        //     output_total_size += (dsize * 4);
-        // }
-        // else if(desc.datatype == dt_int64 || desc.datatype == dt_uint64 || desc.datatype == dt_float64)
-        // {
-        //     output_total_size += (dsize * 8);
-        // }
-        // else
-        // {
-        //     printf("output data type:%d",desc.datatype);
-        //     assert(("unsupported kmodel output data type", 0));
-        // }
-        // each_output_size_by_byte_.push_back(output_total_size);
-        // auto tensor = host_runtime_tensor::create(desc.datatype, shape, hrt::pool_shared).expect("cannot create output tensor");
-        // kmodel_interp_.output_tensor(i, tensor).expect("cannot set output tensor");
+        if (desc.datatype == dt_int8 || desc.datatype == dt_uint8)
+        {
+            output_total_size += dsize;
+        }
+        else if (desc.datatype == dt_int16 || desc.datatype == dt_uint16 || desc.datatype == dt_float16 || desc.datatype == dt_bfloat16)
+        {
+            output_total_size += (dsize * 2);
+        }
+        else if (desc.datatype == dt_int32 || desc.datatype == dt_uint32 || desc.datatype == dt_float32)
+        {
+            output_total_size += (dsize * 4);
+        }
+        else if(desc.datatype == dt_int64 || desc.datatype == dt_uint64 || desc.datatype == dt_float64)
+        {
+            output_total_size += (dsize * 8);
+        }
+        else
+        {
+            printf("output data type:%d",desc.datatype);
+            assert(("unsupported kmodel output data type", 0));
+        }
+
+        each_output_size_by_byte_.push_back(output_total_size);
+        auto tensor = host_runtime_tensor::create(desc.datatype, shape, hrt::pool_shared).expect("cannot create output tensor");
+        kmodel_interp_.output_tensor(i, tensor).expect("cannot set output tensor");
     }
 }
 
@@ -187,8 +187,4 @@ void AIBase::get_output()
         float *p_out = reinterpret_cast<float *>(buf.data());
         p_outputs_.push_back(p_out);
     }
-}
-
-runtime_tensor AIBase::get_output_tensor(int idx){
-    return kmodel_interp_.output_tensor(idx).expect("cannot get current output tensor");
 }

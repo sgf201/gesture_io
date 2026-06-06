@@ -1,4 +1,4 @@
-/* Copyright (c) 2023, Canaan Bright Sight Co., Ltd
+/* Copyright (c) 2025, Canaan Bright Sight Co., Ltd
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -32,12 +32,12 @@
 
 #include <nncase/runtime/interpreter.h>
 #include <nncase/runtime/runtime_op_utility.h>
-#include "scoped_timing.h"
+#include <nncase/runtime/util.h>
+#include "scoped_timing.hpp"
 
 using std::string;
 using std::vector;
 using namespace nncase::runtime;
-
 
 /**
  * @brief AI基类，封装nncase相关操作
@@ -59,6 +59,14 @@ public:
      * @return None
      */
     ~AIBase();
+    
+     /**
+     * @brief 根据索引获取kmodel输入tensor
+     * @param idx 输入数据指针
+     * @param tensor 输入tensor
+     * @return None
+     */
+    void set_input_tensor(size_t idx, runtime_tensor &tensor);
 
     /**
      * @brief 根据索引获取kmodel输入tensor
@@ -66,8 +74,6 @@ public:
      * @return None
      */
     runtime_tensor get_input_tensor(size_t idx);
-
-    void set_input_tensor(size_t idx,runtime_tensor &input_tensor);
 
     /**
      * @brief 推理kmodel
@@ -80,9 +86,6 @@ public:
      * @return None
      */
     void get_output();
-
-    runtime_tensor get_output_tensor(int idx);
-
 
 protected:
     string model_name_;                    // 模型名字

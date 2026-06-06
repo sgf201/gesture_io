@@ -1,4 +1,4 @@
-/* Copyright (c) 2023, Canaan Bright Sight Co., Ltd
+/* Copyright (c) 2025, Canaan Bright Sight Co., Ltd
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -25,29 +25,17 @@
 #ifndef _HAND_DETECTION_H
 #define _HAND_DETECTION_H
 
-#include <cmath>
-#include <fstream>
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
-#include <stdint.h>
+#include <vector>
 
-#include <nncase/runtime/interpreter.h>
-#include <nncase/runtime/runtime_tensor.h>
-
-#include "ai_utils.h"
+#include "utils.h"
 #include "ai_base.h"
 
-using namespace nncase;
-using namespace nncase::runtime;
-using namespace nncase::runtime::detail;
-using namespace std;
+using std::vector;
 
+/**
+ * @brief 手掌检测框
+ */
 typedef struct BoxInfo
 {
     float x1; // 手掌检测框的左上顶点x坐标
@@ -55,7 +43,7 @@ typedef struct BoxInfo
     float x2; // 手掌检测框的右下顶点x坐标
     float y2; // 手掌检测框的右下顶点y坐标
     float score; // 手掌检测框的得分
-    int label; // 手掌检测框的类别
+    string label; // 手掌检测框的类别
 } BoxInfo;
 
 /**
@@ -66,17 +54,31 @@ class HandDetection:public AIBase
 {
 public:
     /**
+     * @brief HandDetection构造函数，加载kmodel,并初始化kmodel输入、输出
+     * @param kmodel_file kmodel文件路径
+     * @param obj_thresh 手掌检测阈值，用于过滤roi
+     * @param nms_thresh 手掌检测框阈值，用于过滤重复roi
+     * @param frame_size 手掌检测输入图片尺寸
+     * @param debug_mode  0（不调试）、 1（只显示时间）、2（显示所有打印信息）
+     * @return None
+     */
+
+    // for image
+    HandDetection(const char *kmodel_file, float obj_thresh, float nms_thresh, FrameSize frame_size,const int debug_mode);
+
+    /**
      * @brief HandDetection构造函数，加载kmodel,并初始化kmodel输入、输出和手掌检测阈值
      * @param kmodel_file kmodel文件路径
      * @param obj_thresh 手掌检测阈值，用于过滤roi
      * @param nms_thresh 手掌检测框阈值，用于过滤重复roi
-     * @param image_size 手掌检测输入尺寸
+     * @param frame_size 手掌检测输入图片尺寸
+     * @param isp_shape   isp输入大小（chw）
      * @param debug_mode  0（不调试）、 1（只显示时间）、2（显示所有打印信息）
      * @return None
      */
 
     // for_video
-    HandDetection(char *kmodel_file, float obj_thresh, float nms_thresh, FrameCHWSize image_size, int debug_mode);
+    HandDetection(const char *kmodel_file, float obj_thresh, float nms_thresh, FrameSize frame_size, FrameCHWSize isp_shape, const int debug_mode);
 
     /**
      * @brief HandDetection析构函数
@@ -84,7 +86,19 @@ public:
      */
     ~HandDetection();
 
-    void pre_process(runtime_tensor& input_tensor);
+    /**
+     * @brief 图片预处理
+     * @param ori_img 原始图片
+     * @return None
+     */
+    void pre_process(cv::Mat ori_img);
+
+    /**
+     * @brief 视频流预处理（ai2d for isp）
+     * @param img_data 当前视频帧数据
+     * @return None
+     */
+    void pre_process(runtime_tensor& img_data);
 
     /**
      * @brief kmodel推理
@@ -99,9 +113,34 @@ public:
      */
     void post_process(std::vector<BoxInfo> &result);
 
-    std::vector<std::string> labels_ = {"hand"}; //模型输出类别名称
+    /**
+     * @brief 将检测结果画到显示器
+     * @param src_img     将要放到显示器显示的mat
+     * @param results     手掌检测结果
+     * @param pic_mode    ture(原图片)，false(osd)
+     * @return None
+     */
+    static void draw_result(cv::Mat& src_img,vector<BoxInfo>& results, bool pic_mode);
+
+    std::vector<std::string> labels_; //模型输出类别名称
+
 
 private:
+
+    std::unique_ptr<ai2d_builder> ai2d_builder_; // ai2d构建器
+    runtime_tensor ai2d_in_tensor_;              // ai2d输入tensor
+    runtime_tensor ai2d_out_tensor_;             // ai2d输出tensor
+    FrameCHWSize isp_shape_;                     // isp对应的地址大小
+
+    float obj_thresh_;     // 手掌检测阈值
+    float nms_thresh_;     // 手掌检测框nms阈值
+    FrameSize frame_size_; // 输入图片尺寸
+    int classes_num_;      // 模型输出类别数
+
+    float anchors_0[3][2] = { { 26,27 }, { 53,52 }, { 75,71 } };
+    float anchors_1[3][2] = { { 80,99 }, { 106,82 }, { 99,134 } };
+    float anchors_2[3][2] = { { 140,113 }, { 161,172 }, { 245,276 } };
+
     /**
      * @brief 非极大值抑制
      * @param input_boxes     后处理之后的基于原始图像的{检测框坐标点、得分和标签}集合
@@ -117,20 +156,6 @@ private:
      * @param anchors           模型推理得到的feature对应的anchor
      * @return                  每个feature对应的结果映射回原始图像的{检测框坐标点、得分和标签}集合
      */
-    std::vector<BoxInfo> decode_infer(float *data, int stride, FrameCHWSize frame_size, float anchors[][2]);
-
-    std::unique_ptr<ai2d_builder> ai2d_builder_; // ai2d构建器
-    runtime_tensor ai2d_in_tensor_;              // ai2d输入tensor
-    runtime_tensor ai2d_out_tensor_;             // ai2d输出tensor
-    FrameCHWSize image_size_;
-    FrameCHWSize input_size_;
-
-    float obj_thresh_;     // 手掌检测阈值
-    float nms_thresh_;     // 手掌检测框nms阈值
-    int classes_num_;      // 模型输出类别数
-
-    float anchors_0[3][2] = { { 26,27 }, { 53,52 }, { 75,71 } };
-    float anchors_1[3][2] = { { 80,99 }, { 106,82 }, { 99,134 } };
-    float anchors_2[3][2] = { { 140,113 }, { 161,172 }, { 245,276 } };
+    std::vector<BoxInfo> decode_infer(float *data, int stride, FrameSize frame_size, float anchors[][2]);
 };
 #endif

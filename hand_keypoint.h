@@ -1,4 +1,4 @@
-/* Copyright (c) 2023, Canaan Bright Sight Co., Ltd
+/* Copyright (c) 2025, Canaan Bright Sight Co., Ltd
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -25,37 +25,42 @@
 #ifndef _HAND_KEYPOINT_H
 #define _HAND_KEYPOINT_H
 
-#include <cmath>
-#include <fstream>
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
-#include <stdint.h>
+#include <vector>
 
-#include <nncase/runtime/interpreter.h>
-#include <nncase/runtime/runtime_tensor.h>
-
-#include "ai_utils.h"
+#include "utils.h"
 #include "ai_base.h"
+#include "hand_detection.h"
 
-
-using namespace nncase;
-using namespace nncase::runtime;
-using namespace nncase::runtime::detail;
-using namespace std;
-
-typedef struct Bbox
+/**
+ * @brief 手掌关键点模型原始输出结果
+ */
+typedef struct HandKeyPointInfo
 {
-    float x; // 人脸检测框的左顶点x坐标
-    float y; // 人脸检测框的左顶点x坐标
-    float w;
-    float h;
-} Bbox;
+    vector<float> pred;                 // 手掌关键点模型原始输出
+} HandKeyPointInfo;
+
+/**
+* @brief 求两个向量之间的夹角
+* @param v1 向量1
+* @param v2 向量2
+* @return 夹角
+*/
+double vector_2d_angle(std::vector<double> v1, std::vector<double> v2);
+
+/**
+* @brief 返回5个手指的角度
+* @param results 手掌关键点坐标
+* @return 5个手指的角度
+*/
+std::vector<double> hand_angle(float* results);
+
+/**
+* @brief 根据手指角度判断手势类别
+* @param angle_list 5个手指的角度
+* @return 手势类别
+*/
+std::string h_gesture(std::vector<double> angle_list);
 
 /**
  * @brief 手部关键点检测
@@ -67,13 +72,20 @@ public:
     /**
      * @brief HandKeypoint构造函数，加载kmodel,并初始化kmodel输入、输出
      * @param kmodel_file kmodel文件路径
-     * @param isp_shape   isp输入大小（chw）
-     * @param vaddr       isp对应虚拟地址
-     * @param paddr       isp对应物理地址
      * @param debug_mode  0（不调试）、 1（只显示时间）、2（显示所有打印信息）
      * @return None
      */
-    HandKeypoint(char *kmodel_file, FrameCHWSize image_size,int debug_mode);
+    HandKeypoint(const char *kmodel_file,const int debug_mode=0);
+
+    /**
+     * @brief HandKeypoint构造函数，加载kmodel,并初始化kmodel输入、输出
+     * @param kmodel_file kmodel文件路径
+     * @param isp_shape   isp输入大小（chw）
+     * @param debug_mode  0（不调试）、 1（只显示时间）、2（显示所有打印信息）
+     * @return None
+     */
+    // for video
+    HandKeypoint(const char *kmodel_file, FrameCHWSize isp_shape, const int debug_mode);
 
     /**
      * @brief HandKeypoint析构函数
@@ -81,7 +93,21 @@ public:
      */
     ~HandKeypoint();
 
-    void pre_process(runtime_tensor& input_tensor,Bbox &bbox);
+    /**
+     * @brief 图片预处理
+     * @param ori_img 原始图片
+     * @param bbox 原始手掌检测框位置
+     * @return None
+     */
+    void pre_process(cv::Mat ori_img, Bbox &bbox);
+
+    /**
+     * @brief 视频流预处理（ai2d for isp）
+     * @param img_data 当前视频帧数据
+     * @param bbox 原始手掌检测框位置
+     * @return None
+     */
+    void pre_process(runtime_tensor& img_data, Bbox &bbox);
 
     /**
      * @brief kmodel推理
@@ -90,42 +116,27 @@ public:
     void inference();
 
     /**
-     * @brief 将kmodel推理结果映射回原图上
-     * @param bbox 原始手掌检测框位置
+     * @param bbox 手掌检测框信息
+     * @param results 手掌关键点在原图上的坐标
      * @return None
      */
-    void post_process(Bbox &bbox);
-
-    void draw_result(cv::Mat &img, std::string text, Bbox &bbox);
-
-    std::vector<int> results;
+    void post_process(Bbox& bbox, HandKeyPointInfo& results);
 
     /**
-     * @brief 求两个向量之间的夹角
-     * @param v1 向量1
-     * @param v2 向量2
-     * @return 夹角
+     * @brief 将手部关键点画到原图
+     * @param img 原图
+     * @param bbox 手掌检测框信息
+     * @param post_process_results
+     * @param pic_mode    ture(原图片)，false(osd)
+     * @return None
      */
-    double vector_2d_angle(std::vector<double> v1, std::vector<double> v2);
-
-    /**
-     * @brief 返回5个手指的角度
-     * @return 5个手指的角度
-     */
-    std::vector<double> hand_angle();
-
-    /**
-     * @brief 根据手指角度判断手势类别
-     * @param angle_list 5个手指的角度
-     * @return 手势类别
-     */
-    std::string h_gesture(std::vector<double> angle_list);
+    static void draw_keypoints(cv::Mat &img, BoxInfo& bbox, HandKeyPointInfo& post_process_results, bool pic_mode);
 
 private:
-
     std::unique_ptr<ai2d_builder> ai2d_builder_; // ai2d构建器
+    runtime_tensor ai2d_in_tensor_;              // ai2d输入tensor
     runtime_tensor ai2d_out_tensor_;             // ai2d输出tensor
-    FrameCHWSize image_size_;
-    FrameCHWSize input_size_;                     
+    FrameCHWSize isp_shape_;                     // isp对应的地址大小
 };
+
 #endif
