@@ -51,50 +51,73 @@ void print_usage(const char *name)
 
 void video_proc(char *argv[])
 {
+    printf("[VIDEO_PROC] Starting video processing thread...\n");
+    fflush(stdout);
+
     int debug_mode = atoi(argv[6]);
     FrameCHWSize image_size={AI_FRAME_CHANNEL,AI_FRAME_HEIGHT, AI_FRAME_WIDTH};
-    // 创建一个空的runtime_tensor对象，用于存储输入数据
+
+    printf("[VIDEO_PROC] AI frame size: %dx%dx%d\n",
+           AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH);
+    fflush(stdout);
+
     runtime_tensor input_tensor;
     dims_t in_shape { 1, AI_FRAME_CHANNEL, AI_FRAME_HEIGHT, AI_FRAME_WIDTH };
-    // 创建一个PipeLine对象，用于处理视频流（无显示模式）
+
+    printf("[VIDEO_PROC] Creating PipeLine...\n");
+    fflush(stdout);
+
     PipeLine pl(debug_mode);
-    // 初始化PipeLine对象
     pl.Create();
-    // 创建一个DumpRes对象，用于存储帧数据
+
+    printf("[VIDEO_PROC] PipeLine created. Initializing AI models...\n");
+    printf("[VIDEO_PROC] Loading hand detection model: %s\n", argv[1]);
+    fflush(stdout);
+
     DumpRes dump_res;
     HandDetection hd(argv[1], atof(argv[3]), atof(argv[4]), image_size, debug_mode);
-    HandKeypoint hk(argv[5], image_size,debug_mode);
+
+    printf("[VIDEO_PROC] Hand detection model loaded. Loading keypoint model: %s\n", argv[5]);
+    fflush(stdout);
+
+    HandKeypoint hk(argv[5], image_size, debug_mode);
+
+    printf("[VIDEO_PROC] AI models loaded. Starting main loop...\n");
+    fflush(stdout);
+
     std::vector<BoxInfo> results;
-    
     int frame_count = 0;
+
     while(!isp_stop){
-        // 创建一个ScopedTiming对象，用于计算总时间
-        ScopedTiming st("total time", 1);
-        // 从PipeLine中获取一帧数据，并创建tensor
         pl.GetFrame(dump_res);
-        
-        // 检查帧数据是否有效
+
         if (dump_res.virt_addr == 0) {
-            printf("[ERROR] GetFrame returned invalid address, skipping frame\n");
+            printf("[ERROR] Frame %d: GetFrame returned invalid address, skipping\n", frame_count + 1);
             fflush(stdout);
-            usleep(10000);
+            usleep(30000);
             continue;
         }
-        
+
         input_tensor = host_runtime_tensor::create(typecode_t::dt_uint8, in_shape, { (gsl::byte *)dump_res.virt_addr, compute_size(in_shape) },false, hrt::pool_shared, dump_res.phy_addr).expect("cannot create input tensor");
         hrt::sync(input_tensor, sync_op_t::sync_write_back, true).expect("sync write_back failed");
-        //前处理，推理，后处理
+
         results.clear();
         hd.pre_process(input_tensor);
         hd.inference();
         hd.post_process(results);
-        
+
         frame_count++;
-        if (frame_count % 10 == 0) {
-            printf("[DEBUG] Frame: %d, Hands detected: %zu\n", frame_count, results.size());
+
+        if (frame_count % 30 == 0) {
+            printf("[FRAME] #%d: hands=%zu, virt_addr=0x%lx, phy_addr=0x%lx\n",
+                   frame_count, results.size(),
+                   (unsigned long)dump_res.virt_addr, (unsigned long)dump_res.phy_addr);
+            fflush(stdout);
+        } else if (results.size() > 0) {
+            printf("[FRAME] #%d: hands=%zu\n", frame_count, results.size());
             fflush(stdout);
         }
-        
+
         for (auto r: results)
         {
             int w = r.x2 - r.x1 + 1;
@@ -115,15 +138,20 @@ void video_proc(char *argv[])
             hk.post_process(bbox);
             std::vector<double> angle_list = hk.hand_angle();
             std::string gesture = hk.h_gesture(angle_list);
-            
-            // 串口输出手势识别结果
-            printf("[Gesture] Detected: %s\n", gesture.c_str());
+
+            printf("[GESTURE] Frame #%d: %s (bbox: %d,%d %dx%d)\n",
+                   frame_count, gesture.c_str(), r.x1, r.y1, w, h);
             fflush(stdout);
         }
-        // 释放帧数据
+
         pl.ReleaseFrame(dump_res);
     }
+
+    printf("[VIDEO_PROC] Stop signal received. Cleaning up...\n");
+    fflush(stdout);
     pl.Destroy();
+    printf("[VIDEO_PROC] Cleanup done.\n");
+    fflush(stdout);
 }
 
 
