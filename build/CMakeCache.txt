@@ -22,7 +22,7 @@ CMAKE_AR:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=Release
+CMAKE_BUILD_TYPE:STRING=
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -95,7 +95,7 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=/home/sgf/ws/k230_gesture_io/build
+CMAKE_INSTALL_PREFIX:PATH=/usr/local
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-ld
@@ -139,7 +139,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=gesture_demo
+CMAKE_PROJECT_NAME:STATIC=sq_handkp_class
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-ranlib
@@ -207,13 +207,13 @@ CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/sgf/ws/k230_gesture_io/cmake/Riscv64.cmake
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-gesture_demo_BINARY_DIR:STATIC=/home/sgf/ws/k230_gesture_io/build
+sq_handkp_class_BINARY_DIR:STATIC=/home/sgf/ws/k230_gesture_io/build
 
 //Value Computed by CMake
-gesture_demo_IS_TOP_LEVEL:STATIC=ON
+sq_handkp_class_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-gesture_demo_SOURCE_DIR:STATIC=/home/sgf/ws/k230_gesture_io
+sq_handkp_class_SOURCE_DIR:STATIC=/home/sgf/ws/k230_gesture_io
 
 
 ########################
@@ -297,6 +297,8 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/sgf/ws/k230_gesture_io
+//Install .so files without execute permission.
+CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MAKE_PROGRAM

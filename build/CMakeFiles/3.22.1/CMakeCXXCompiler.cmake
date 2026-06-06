@@ -78,6 +78,6 @@ endif()
 
 
 set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include/c++/12.0.1;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include/c++/12.0.1/riscv64-unknown-linux-musl;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include/c++/12.0.1/backward;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/include")
-set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gomp;gcc_s;gcc;pthread;c;atomic;gcc_s;gcc")
+set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "atomic;stdc++;m;gcc_s;gcc;c;gcc_s;gcc")
 set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

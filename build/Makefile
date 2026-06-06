@@ -162,32 +162,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named gesture_demo.elf
+# Target rules for targets named sq_handkp_class.elf
 
 # Build rule for target.
-gesture_demo.elf: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gesture_demo.elf
-.PHONY : gesture_demo.elf
+sq_handkp_class.elf: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sq_handkp_class.elf
+.PHONY : sq_handkp_class.elf
 
 # fast build rule for target.
-gesture_demo.elf/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/build
-.PHONY : gesture_demo.elf/fast
+sq_handkp_class.elf/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/build
+.PHONY : sq_handkp_class.elf/fast
 
-common_files/ai_base.obj: common_files/ai_base.cc.obj
-.PHONY : common_files/ai_base.obj
+common_files/ai_base.o: common_files/ai_base.cc.o
+.PHONY : common_files/ai_base.o
 
 # target to build an object file
-common_files/ai_base.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_base.cc.obj
-.PHONY : common_files/ai_base.cc.obj
+common_files/ai_base.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o
+.PHONY : common_files/ai_base.cc.o
 
 common_files/ai_base.i: common_files/ai_base.cc.i
 .PHONY : common_files/ai_base.i
 
 # target to preprocess a source file
 common_files/ai_base.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_base.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.i
 .PHONY : common_files/ai_base.cc.i
 
 common_files/ai_base.s: common_files/ai_base.cc.s
@@ -195,23 +195,23 @@ common_files/ai_base.s: common_files/ai_base.cc.s
 
 # target to generate assembly for a file
 common_files/ai_base.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_base.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.s
 .PHONY : common_files/ai_base.cc.s
 
-common_files/ai_utils.obj: common_files/ai_utils.cc.obj
-.PHONY : common_files/ai_utils.obj
+common_files/ai_utils.o: common_files/ai_utils.cc.o
+.PHONY : common_files/ai_utils.o
 
 # target to build an object file
-common_files/ai_utils.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_utils.cc.obj
-.PHONY : common_files/ai_utils.cc.obj
+common_files/ai_utils.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o
+.PHONY : common_files/ai_utils.cc.o
 
 common_files/ai_utils.i: common_files/ai_utils.cc.i
 .PHONY : common_files/ai_utils.i
 
 # target to preprocess a source file
 common_files/ai_utils.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_utils.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.i
 .PHONY : common_files/ai_utils.cc.i
 
 common_files/ai_utils.s: common_files/ai_utils.cc.s
@@ -219,23 +219,23 @@ common_files/ai_utils.s: common_files/ai_utils.cc.s
 
 # target to generate assembly for a file
 common_files/ai_utils.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/ai_utils.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.s
 .PHONY : common_files/ai_utils.cc.s
 
-common_files/video_pipeline.obj: common_files/video_pipeline.cc.obj
-.PHONY : common_files/video_pipeline.obj
+common_files/video_pipeline.o: common_files/video_pipeline.cc.o
+.PHONY : common_files/video_pipeline.o
 
 # target to build an object file
-common_files/video_pipeline.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/video_pipeline.cc.obj
-.PHONY : common_files/video_pipeline.cc.obj
+common_files/video_pipeline.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o
+.PHONY : common_files/video_pipeline.cc.o
 
 common_files/video_pipeline.i: common_files/video_pipeline.cc.i
 .PHONY : common_files/video_pipeline.i
 
 # target to preprocess a source file
 common_files/video_pipeline.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/video_pipeline.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.i
 .PHONY : common_files/video_pipeline.cc.i
 
 common_files/video_pipeline.s: common_files/video_pipeline.cc.s
@@ -243,23 +243,23 @@ common_files/video_pipeline.s: common_files/video_pipeline.cc.s
 
 # target to generate assembly for a file
 common_files/video_pipeline.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/common_files/video_pipeline.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.s
 .PHONY : common_files/video_pipeline.cc.s
 
-hand_detection.obj: hand_detection.cc.obj
-.PHONY : hand_detection.obj
+hand_detection.o: hand_detection.cc.o
+.PHONY : hand_detection.o
 
 # target to build an object file
-hand_detection.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_detection.cc.obj
-.PHONY : hand_detection.cc.obj
+hand_detection.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o
+.PHONY : hand_detection.cc.o
 
 hand_detection.i: hand_detection.cc.i
 .PHONY : hand_detection.i
 
 # target to preprocess a source file
 hand_detection.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_detection.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.i
 .PHONY : hand_detection.cc.i
 
 hand_detection.s: hand_detection.cc.s
@@ -267,23 +267,23 @@ hand_detection.s: hand_detection.cc.s
 
 # target to generate assembly for a file
 hand_detection.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_detection.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.s
 .PHONY : hand_detection.cc.s
 
-hand_keypoint.obj: hand_keypoint.cc.obj
-.PHONY : hand_keypoint.obj
+hand_keypoint.o: hand_keypoint.cc.o
+.PHONY : hand_keypoint.o
 
 # target to build an object file
-hand_keypoint.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_keypoint.cc.obj
-.PHONY : hand_keypoint.cc.obj
+hand_keypoint.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o
+.PHONY : hand_keypoint.cc.o
 
 hand_keypoint.i: hand_keypoint.cc.i
 .PHONY : hand_keypoint.i
 
 # target to preprocess a source file
 hand_keypoint.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_keypoint.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.i
 .PHONY : hand_keypoint.cc.i
 
 hand_keypoint.s: hand_keypoint.cc.s
@@ -291,23 +291,23 @@ hand_keypoint.s: hand_keypoint.cc.s
 
 # target to generate assembly for a file
 hand_keypoint.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/hand_keypoint.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.s
 .PHONY : hand_keypoint.cc.s
 
-main.obj: main.cc.obj
-.PHONY : main.obj
+main.o: main.cc.o
+.PHONY : main.o
 
 # target to build an object file
-main.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/main.cc.obj
-.PHONY : main.cc.obj
+main.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/main.cc.o
+.PHONY : main.cc.o
 
 main.i: main.cc.i
 .PHONY : main.i
 
 # target to preprocess a source file
 main.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/main.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/main.cc.i
 .PHONY : main.cc.i
 
 main.s: main.cc.s
@@ -315,7 +315,7 @@ main.s: main.cc.s
 
 # target to generate assembly for a file
 main.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/main.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/main.cc.s
 .PHONY : main.cc.s
 
 # Help Target
@@ -330,23 +330,23 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... gesture_demo.elf"
-	@echo "... common_files/ai_base.obj"
+	@echo "... sq_handkp_class.elf"
+	@echo "... common_files/ai_base.o"
 	@echo "... common_files/ai_base.i"
 	@echo "... common_files/ai_base.s"
-	@echo "... common_files/ai_utils.obj"
+	@echo "... common_files/ai_utils.o"
 	@echo "... common_files/ai_utils.i"
 	@echo "... common_files/ai_utils.s"
-	@echo "... common_files/video_pipeline.obj"
+	@echo "... common_files/video_pipeline.o"
 	@echo "... common_files/video_pipeline.i"
 	@echo "... common_files/video_pipeline.s"
-	@echo "... hand_detection.obj"
+	@echo "... hand_detection.o"
 	@echo "... hand_detection.i"
 	@echo "... hand_detection.s"
-	@echo "... hand_keypoint.obj"
+	@echo "... hand_keypoint.o"
 	@echo "... hand_keypoint.i"
 	@echo "... hand_keypoint.s"
-	@echo "... main.obj"
+	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
 .PHONY : help

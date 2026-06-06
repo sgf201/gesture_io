@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/sgf/ws/k230_gesture_io/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/gesture_demo.elf.dir/all
+all: CMakeFiles/sq_handkp_class.elf.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/gesture_demo.elf.dir/clean
+clean: CMakeFiles/sq_handkp_class.elf.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/gesture_demo.elf.dir
+# Target rules for target CMakeFiles/sq_handkp_class.elf.dir
 
 # All Build rule for target.
-CMakeFiles/gesture_demo.elf.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target gesture_demo.elf"
-.PHONY : CMakeFiles/gesture_demo.elf.dir/all
+CMakeFiles/sq_handkp_class.elf.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target sq_handkp_class.elf"
+.PHONY : CMakeFiles/sq_handkp_class.elf.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/gesture_demo.elf.dir/rule: cmake_check_build_system
+CMakeFiles/sq_handkp_class.elf.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/sgf/ws/k230_gesture_io/build/CMakeFiles 7
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gesture_demo.elf.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sq_handkp_class.elf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/sgf/ws/k230_gesture_io/build/CMakeFiles 0
-.PHONY : CMakeFiles/gesture_demo.elf.dir/rule
+.PHONY : CMakeFiles/sq_handkp_class.elf.dir/rule
 
 # Convenience name for target.
-gesture_demo.elf: CMakeFiles/gesture_demo.elf.dir/rule
-.PHONY : gesture_demo.elf
+sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/rule
+.PHONY : sq_handkp_class.elf
 
 # clean rule for target.
-CMakeFiles/gesture_demo.elf.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_demo.elf.dir/build.make CMakeFiles/gesture_demo.elf.dir/clean
-.PHONY : CMakeFiles/gesture_demo.elf.dir/clean
+CMakeFiles/sq_handkp_class.elf.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/clean
+.PHONY : CMakeFiles/sq_handkp_class.elf.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

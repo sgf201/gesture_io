@@ -1,1 +1,0 @@
-/home/sgf/ws/k230_gesture_io/build/bin/gesture_demo.elf

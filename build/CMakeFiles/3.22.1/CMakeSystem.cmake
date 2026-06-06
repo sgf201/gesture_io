@@ -5,8 +5,8 @@ set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
 include("/home/sgf/ws/k230_gesture_io/cmake/Riscv64.cmake")
 
-set(CMAKE_SYSTEM "Generic")
-set(CMAKE_SYSTEM_NAME "Generic")
+set(CMAKE_SYSTEM "Linux")
+set(CMAKE_SYSTEM_NAME "Linux")
 set(CMAKE_SYSTEM_VERSION "")
 set(CMAKE_SYSTEM_PROCESSOR "riscv64")
 

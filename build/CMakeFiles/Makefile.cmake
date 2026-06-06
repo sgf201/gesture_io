@@ -28,7 +28,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeDetermineSystem.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeFindBinUtils.cmake"
-  "/usr/share/cmake-3.22/Modules/CMakeForceCompiler.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake"
@@ -94,7 +93,12 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.22/Modules/Compiler/zOS-C-DetermineCompiler.cmake"
   "/usr/share/cmake-3.22/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake"
   "/usr/share/cmake-3.22/Modules/Internal/FeatureTesting.cmake"
-  "/usr/share/cmake-3.22/Modules/Platform/Generic.cmake"
+  "/usr/share/cmake-3.22/Modules/Platform/Linux-Determine-CXX.cmake"
+  "/usr/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake"
+  "/usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake"
+  "/usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake"
+  "/usr/share/cmake-3.22/Modules/Platform/Linux.cmake"
+  "/usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake"
   )
 
 # The corresponding makefile is:
@@ -115,5 +119,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/gesture_demo.elf.dir/DependInfo.cmake"
+  "CMakeFiles/sq_handkp_class.elf.dir/DependInfo.cmake"
   )

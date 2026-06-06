@@ -1,4 +1,4 @@
-/home/sgf/ws/k230_gesture_io/build/CMakeFiles/gesture_demo.elf.dir
+/home/sgf/ws/k230_gesture_io/build/CMakeFiles/sq_handkp_class.elf.dir
 /home/sgf/ws/k230_gesture_io/build/CMakeFiles/edit_cache.dir
 /home/sgf/ws/k230_gesture_io/build/CMakeFiles/rebuild_cache.dir
 /home/sgf/ws/k230_gesture_io/build/CMakeFiles/list_install_components.dir
