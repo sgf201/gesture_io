@@ -24,6 +24,8 @@
  */
 #include <iostream>
 #include <thread>
+#include <string>
+#include <fstream>
 #include "utils.h"
 #include "setting.h"
 #include "sensor_buf_manager.h"
@@ -34,18 +36,30 @@ using std::cerr;
 using std::cout;
 using std::endl;
 using std::thread;
+using std::string;
 
 static std::mutex result_mutex;
 static vector<BoxInfo> hand_results;
 static vector<HandKeyPointInfo> hand_keypoint_results;
 std::atomic<bool> ai_stop(false);
-// 显示线程退出标志
 std::atomic<bool> display_stop(false);
 static volatile unsigned kpu_frame_count = 0;
 static struct timeval tv, tv2;
-// 显示实例和OSD缓冲区
 static struct display* display;
 struct display_buffer* draw_buffer;
+
+// 串口通信协议
+#define PROTOCOL_START "@#"
+#define PROTOCOL_END "#@"
+
+void send_command(const string& cmd) {
+    printf("%s%s%s\n", PROTOCOL_START, cmd.c_str(), PROTOCOL_END);
+    fflush(stdout);
+}
+
+string last_gesture = "";
+unsigned int gesture_stable_count = 0;
+const unsigned int STABLE_THRESHOLD = 3;
 
 
 void print_usage(const char *name)
@@ -141,10 +155,17 @@ static void ai_proc(char *argv[], int video_device) {
             std::vector<double> angle_list = hand_angle(post_process_result.pred.data());
             std::string gesture = h_gesture(angle_list);
             
-            // 打印识别结果
-            printf("[GESTURE] Hand detected at (%d,%d) size %dx%d, gesture: %s\n",
-                   (int)r.x1, (int)r.y1, w, h, gesture.c_str());
-            fflush(stdout);
+            // 手势稳定性检测
+            if (gesture == last_gesture) {
+                gesture_stable_count++;
+                if (gesture_stable_count >= STABLE_THRESHOLD && gesture != "other") {
+                    send_command(gesture);
+                    gesture_stable_count = 0;
+                }
+            } else {
+                last_gesture = gesture;
+                gesture_stable_count = 1;
+            }
         }
         result_mutex.unlock();
         kpu_frame_count += 1;
@@ -221,22 +242,16 @@ int frame_handler(struct v4l2_drm_context *context, bool displayed)
         display_frame_count += 1;
     }
 
-    // FPS counter
+    // FPS counter (silent mode)
     gettimeofday(&tv2, NULL);
     uint64_t duration = 1000000 * (tv2.tv_sec - tv.tv_sec) + tv2.tv_usec - tv.tv_usec;
     if (duration >= 1000000) {
-        fprintf(stderr, " poll: %.2f, ", response * 1000000. / duration);
         response = 0;
         if (display) {
-            fprintf(stderr, "display: %.2f, ", display_frame_count * 1000000. / duration);
             display_frame_count = 0;
         }
-        fprintf(stderr, "camera: %.2f, ", context[0].frame_count * 1000000. / duration);
         context[0].frame_count = 0;
-        fprintf(stderr, "KPU: %.2f", kpu_frame_count * 1000000. / duration);
         kpu_frame_count = 0;
-        fprintf(stderr, "          \r");
-        fflush(stderr);
         gettimeofday(&tv, NULL);
     }
 

@@ -1,0 +1,15 @@
+[Unit]
+Description=Hand Gesture Recognition Demo
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/root/sq_handkp_class_linux.elf /root/hand_det.kmodel None 0.5 0.5 /root/handkp_det.kmodel 0
+WorkingDirectory=/root
+Restart=always
+RestartSec=5
+StandardOutput=journal+console
+StandardError=journal+console
+
+[Install]
+WantedBy=multi-user.target
