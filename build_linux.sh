@@ -8,6 +8,9 @@ export PATH=$TOOLCHAIN_PATH:$PATH
 # 设置 SDK 路径（用于头文件和库）
 SDK_LINUX_PATH=/home/sgf/ws/k230_linux_pangofly
 
+# 设置 pangofly 路径
+PANGOFLY_PATH=/home/sgf/ws/pangofly
+
 # 清理旧的构建
 rm -rf build_linux
 mkdir build_linux
@@ -18,6 +21,8 @@ cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=${TOOLCHAIN_PATH}/riscv64-unknown-linux-gnu-gcc \
     -DCMAKE_CXX_COMPILER=${TOOLCHAIN_PATH}/riscv64-unknown-linux-gnu-c++ \
     -DCMAKE_FIND_ROOT_PATH=${SDK_LINUX_PATH}/output/k230_linux_defconfig/staging \
+    -DPANGOFLY_INCLUDE_DIR=${PANGOFLY_PATH} \
+    -DPANGOFLY_LIBRARY=${PANGOFLY_PATH}/build_linux/libpangofly.so \
     ..
 
 # 编译

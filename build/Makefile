@@ -174,77 +174,166 @@ sq_handkp_class.elf/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/build
 .PHONY : sq_handkp_class.elf/fast
 
-common_files/ai_base.o: common_files/ai_base.cc.o
-.PHONY : common_files/ai_base.o
+#=============================================================================
+# Target rules for targets named gesture_publisher
+
+# Build rule for target.
+gesture_publisher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gesture_publisher
+.PHONY : gesture_publisher
+
+# fast build rule for target.
+gesture_publisher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/build
+.PHONY : gesture_publisher/fast
+
+#=============================================================================
+# Target rules for targets named gesture_subscriber
+
+# Build rule for target.
+gesture_subscriber: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gesture_subscriber
+.PHONY : gesture_subscriber
+
+# fast build rule for target.
+gesture_subscriber/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/build
+.PHONY : gesture_subscriber/fast
+
+common/ai_base.o: common/ai_base.cc.o
+.PHONY : common/ai_base.o
 
 # target to build an object file
-common_files/ai_base.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o
-.PHONY : common_files/ai_base.cc.o
+common/ai_base.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/common/ai_base.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/common/ai_base.cc.o
+.PHONY : common/ai_base.cc.o
 
-common_files/ai_base.i: common_files/ai_base.cc.i
-.PHONY : common_files/ai_base.i
+common/ai_base.i: common/ai_base.cc.i
+.PHONY : common/ai_base.i
 
 # target to preprocess a source file
-common_files/ai_base.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.i
-.PHONY : common_files/ai_base.cc.i
+common/ai_base.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/common/ai_base.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/common/ai_base.cc.i
+.PHONY : common/ai_base.cc.i
 
-common_files/ai_base.s: common_files/ai_base.cc.s
-.PHONY : common_files/ai_base.s
+common/ai_base.s: common/ai_base.cc.s
+.PHONY : common/ai_base.s
 
 # target to generate assembly for a file
-common_files/ai_base.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.s
-.PHONY : common_files/ai_base.cc.s
+common/ai_base.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/common/ai_base.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/common/ai_base.cc.s
+.PHONY : common/ai_base.cc.s
 
-common_files/ai_utils.o: common_files/ai_utils.cc.o
-.PHONY : common_files/ai_utils.o
+common/sensor_buf_manager.o: common/sensor_buf_manager.cc.o
+.PHONY : common/sensor_buf_manager.o
 
 # target to build an object file
-common_files/ai_utils.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o
-.PHONY : common_files/ai_utils.cc.o
+common/sensor_buf_manager.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/common/sensor_buf_manager.cc.o
+.PHONY : common/sensor_buf_manager.cc.o
 
-common_files/ai_utils.i: common_files/ai_utils.cc.i
-.PHONY : common_files/ai_utils.i
+common/sensor_buf_manager.i: common/sensor_buf_manager.cc.i
+.PHONY : common/sensor_buf_manager.i
 
 # target to preprocess a source file
-common_files/ai_utils.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.i
-.PHONY : common_files/ai_utils.cc.i
+common/sensor_buf_manager.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/common/sensor_buf_manager.cc.i
+.PHONY : common/sensor_buf_manager.cc.i
 
-common_files/ai_utils.s: common_files/ai_utils.cc.s
-.PHONY : common_files/ai_utils.s
+common/sensor_buf_manager.s: common/sensor_buf_manager.cc.s
+.PHONY : common/sensor_buf_manager.s
 
 # target to generate assembly for a file
-common_files/ai_utils.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.s
-.PHONY : common_files/ai_utils.cc.s
+common/sensor_buf_manager.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/common/sensor_buf_manager.cc.s
+.PHONY : common/sensor_buf_manager.cc.s
 
-common_files/video_pipeline.o: common_files/video_pipeline.cc.o
-.PHONY : common_files/video_pipeline.o
+common/utils.o: common/utils.cc.o
+.PHONY : common/utils.o
 
 # target to build an object file
-common_files/video_pipeline.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o
-.PHONY : common_files/video_pipeline.cc.o
+common/utils.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/common/utils.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/common/utils.cc.o
+.PHONY : common/utils.cc.o
 
-common_files/video_pipeline.i: common_files/video_pipeline.cc.i
-.PHONY : common_files/video_pipeline.i
+common/utils.i: common/utils.cc.i
+.PHONY : common/utils.i
 
 # target to preprocess a source file
-common_files/video_pipeline.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.i
-.PHONY : common_files/video_pipeline.cc.i
+common/utils.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/common/utils.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/common/utils.cc.i
+.PHONY : common/utils.cc.i
 
-common_files/video_pipeline.s: common_files/video_pipeline.cc.s
-.PHONY : common_files/video_pipeline.s
+common/utils.s: common/utils.cc.s
+.PHONY : common/utils.s
 
 # target to generate assembly for a file
-common_files/video_pipeline.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.s
-.PHONY : common_files/video_pipeline.cc.s
+common/utils.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/common/utils.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/common/utils.cc.s
+.PHONY : common/utils.cc.s
+
+gesture_publisher.o: gesture_publisher.cc.o
+.PHONY : gesture_publisher.o
+
+# target to build an object file
+gesture_publisher.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/gesture_publisher.cc.o
+.PHONY : gesture_publisher.cc.o
+
+gesture_publisher.i: gesture_publisher.cc.i
+.PHONY : gesture_publisher.i
+
+# target to preprocess a source file
+gesture_publisher.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/gesture_publisher.cc.i
+.PHONY : gesture_publisher.cc.i
+
+gesture_publisher.s: gesture_publisher.cc.s
+.PHONY : gesture_publisher.s
+
+# target to generate assembly for a file
+gesture_publisher.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_publisher.dir/build.make CMakeFiles/gesture_publisher.dir/gesture_publisher.cc.s
+.PHONY : gesture_publisher.cc.s
+
+gesture_subscriber.o: gesture_subscriber.cc.o
+.PHONY : gesture_subscriber.o
+
+# target to build an object file
+gesture_subscriber.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/gesture_subscriber.cc.o
+.PHONY : gesture_subscriber.cc.o
+
+gesture_subscriber.i: gesture_subscriber.cc.i
+.PHONY : gesture_subscriber.i
+
+# target to preprocess a source file
+gesture_subscriber.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/gesture_subscriber.cc.i
+.PHONY : gesture_subscriber.cc.i
+
+gesture_subscriber.s: gesture_subscriber.cc.s
+.PHONY : gesture_subscriber.s
+
+# target to generate assembly for a file
+gesture_subscriber.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/gesture_subscriber.cc.s
+.PHONY : gesture_subscriber.cc.s
 
 hand_detection.o: hand_detection.cc.o
 .PHONY : hand_detection.o
@@ -252,6 +341,7 @@ hand_detection.o: hand_detection.cc.o
 # target to build an object file
 hand_detection.cc.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/hand_detection.cc.o
 .PHONY : hand_detection.cc.o
 
 hand_detection.i: hand_detection.cc.i
@@ -260,6 +350,7 @@ hand_detection.i: hand_detection.cc.i
 # target to preprocess a source file
 hand_detection.cc.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/hand_detection.cc.i
 .PHONY : hand_detection.cc.i
 
 hand_detection.s: hand_detection.cc.s
@@ -268,6 +359,7 @@ hand_detection.s: hand_detection.cc.s
 # target to generate assembly for a file
 hand_detection.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/hand_detection.cc.s
 .PHONY : hand_detection.cc.s
 
 hand_keypoint.o: hand_keypoint.cc.o
@@ -276,6 +368,7 @@ hand_keypoint.o: hand_keypoint.cc.o
 # target to build an object file
 hand_keypoint.cc.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/hand_keypoint.cc.o
 .PHONY : hand_keypoint.cc.o
 
 hand_keypoint.i: hand_keypoint.cc.i
@@ -284,6 +377,7 @@ hand_keypoint.i: hand_keypoint.cc.i
 # target to preprocess a source file
 hand_keypoint.cc.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/hand_keypoint.cc.i
 .PHONY : hand_keypoint.cc.i
 
 hand_keypoint.s: hand_keypoint.cc.s
@@ -292,6 +386,7 @@ hand_keypoint.s: hand_keypoint.cc.s
 # target to generate assembly for a file
 hand_keypoint.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sq_handkp_class.elf.dir/build.make CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gesture_subscriber.dir/build.make CMakeFiles/gesture_subscriber.dir/hand_keypoint.cc.s
 .PHONY : hand_keypoint.cc.s
 
 main.o: main.cc.o
@@ -330,16 +425,24 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... gesture_publisher"
+	@echo "... gesture_subscriber"
 	@echo "... sq_handkp_class.elf"
-	@echo "... common_files/ai_base.o"
-	@echo "... common_files/ai_base.i"
-	@echo "... common_files/ai_base.s"
-	@echo "... common_files/ai_utils.o"
-	@echo "... common_files/ai_utils.i"
-	@echo "... common_files/ai_utils.s"
-	@echo "... common_files/video_pipeline.o"
-	@echo "... common_files/video_pipeline.i"
-	@echo "... common_files/video_pipeline.s"
+	@echo "... common/ai_base.o"
+	@echo "... common/ai_base.i"
+	@echo "... common/ai_base.s"
+	@echo "... common/sensor_buf_manager.o"
+	@echo "... common/sensor_buf_manager.i"
+	@echo "... common/sensor_buf_manager.s"
+	@echo "... common/utils.o"
+	@echo "... common/utils.i"
+	@echo "... common/utils.s"
+	@echo "... gesture_publisher.o"
+	@echo "... gesture_publisher.i"
+	@echo "... gesture_publisher.s"
+	@echo "... gesture_subscriber.o"
+	@echo "... gesture_subscriber.i"
+	@echo "... gesture_subscriber.s"
 	@echo "... hand_detection.o"
 	@echo "... hand_detection.i"
 	@echo "... hand_detection.s"

@@ -73,104 +73,104 @@ CMakeFiles/sq_handkp_class.elf.dir/main.cc.o: CMakeFiles/sq_handkp_class.elf.dir
 CMakeFiles/sq_handkp_class.elf.dir/main.cc.o: ../main.cc
 CMakeFiles/sq_handkp_class.elf.dir/main.cc.o: CMakeFiles/sq_handkp_class.elf.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/main.cc.o"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/main.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/main.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/main.cc.o -c /home/sgf/ws/k230_gesture_io/main.cc
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/main.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/main.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/main.cc.o -c /home/sgf/ws/k230_gesture_io/main.cc
 
 CMakeFiles/sq_handkp_class.elf.dir/main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sq_handkp_class.elf.dir/main.cc.i"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/main.cc > CMakeFiles/sq_handkp_class.elf.dir/main.cc.i
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/main.cc > CMakeFiles/sq_handkp_class.elf.dir/main.cc.i
 
 CMakeFiles/sq_handkp_class.elf.dir/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sq_handkp_class.elf.dir/main.cc.s"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/main.cc -o CMakeFiles/sq_handkp_class.elf.dir/main.cc.s
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/main.cc -o CMakeFiles/sq_handkp_class.elf.dir/main.cc.s
+
+CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o: CMakeFiles/sq_handkp_class.elf.dir/flags.make
+CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o: ../common/utils.cc
+CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o: CMakeFiles/sq_handkp_class.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o -c /home/sgf/ws/k230_gesture_io/common/utils.cc
+
+CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.i"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/common/utils.cc > CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.i
+
+CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.s"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/common/utils.cc -o CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.s
+
+CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o: CMakeFiles/sq_handkp_class.elf.dir/flags.make
+CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o: ../common/ai_base.cc
+CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o: CMakeFiles/sq_handkp_class.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o -c /home/sgf/ws/k230_gesture_io/common/ai_base.cc
+
+CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.i"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/common/ai_base.cc > CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.i
+
+CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.s"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/common/ai_base.cc -o CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.s
+
+CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o: CMakeFiles/sq_handkp_class.elf.dir/flags.make
+CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o: ../common/sensor_buf_manager.cc
+CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o: CMakeFiles/sq_handkp_class.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o -c /home/sgf/ws/k230_gesture_io/common/sensor_buf_manager.cc
+
+CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.i"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/common/sensor_buf_manager.cc > CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.i
+
+CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.s"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/common/sensor_buf_manager.cc -o CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.s
 
 CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o: CMakeFiles/sq_handkp_class.elf.dir/flags.make
 CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o: ../hand_detection.cc
 CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o: CMakeFiles/sq_handkp_class.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o -c /home/sgf/ws/k230_gesture_io/hand_detection.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o -c /home/sgf/ws/k230_gesture_io/hand_detection.cc
 
 CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.i"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/hand_detection.cc > CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.i
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/hand_detection.cc > CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.i
 
 CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.s"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/hand_detection.cc -o CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.s
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/hand_detection.cc -o CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.s
 
 CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o: CMakeFiles/sq_handkp_class.elf.dir/flags.make
 CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o: ../hand_keypoint.cc
 CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o: CMakeFiles/sq_handkp_class.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o -c /home/sgf/ws/k230_gesture_io/hand_keypoint.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o"
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o -c /home/sgf/ws/k230_gesture_io/hand_keypoint.cc
 
 CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.i"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/hand_keypoint.cc > CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.i
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/hand_keypoint.cc > CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.i
 
 CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.s"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/hand_keypoint.cc -o CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.s
-
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o: CMakeFiles/sq_handkp_class.elf.dir/flags.make
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o: ../common_files/ai_base.cc
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o: CMakeFiles/sq_handkp_class.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o -c /home/sgf/ws/k230_gesture_io/common_files/ai_base.cc
-
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.i"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/common_files/ai_base.cc > CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.i
-
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.s"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/common_files/ai_base.cc -o CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.s
-
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o: CMakeFiles/sq_handkp_class.elf.dir/flags.make
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o: ../common_files/ai_utils.cc
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o: CMakeFiles/sq_handkp_class.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o -c /home/sgf/ws/k230_gesture_io/common_files/ai_utils.cc
-
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.i"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/common_files/ai_utils.cc > CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.i
-
-CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.s"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/common_files/ai_utils.cc -o CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.s
-
-CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o: CMakeFiles/sq_handkp_class.elf.dir/flags.make
-CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o: ../common_files/video_pipeline.cc
-CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o: CMakeFiles/sq_handkp_class.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o -MF CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o.d -o CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o -c /home/sgf/ws/k230_gesture_io/common_files/video_pipeline.cc
-
-CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.i"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sgf/ws/k230_gesture_io/common_files/video_pipeline.cc > CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.i
-
-CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.s"
-	/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/common_files/video_pipeline.cc -o CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.s
+	/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-g++ --sysroot=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sgf/ws/k230_gesture_io/hand_keypoint.cc -o CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.s
 
 # Object files for target sq_handkp_class.elf
 sq_handkp_class_elf_OBJECTS = \
 "CMakeFiles/sq_handkp_class.elf.dir/main.cc.o" \
+"CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o" \
+"CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o" \
+"CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o" \
 "CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o" \
-"CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o" \
-"CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o" \
-"CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o" \
-"CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o"
+"CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o"
 
 # External object files for target sq_handkp_class.elf
 sq_handkp_class_elf_EXTERNAL_OBJECTS =
 
 sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/main.cc.o
+sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/common/utils.cc.o
+sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/common/ai_base.cc.o
+sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/common/sensor_buf_manager.cc.o
 sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/hand_detection.cc.o
 sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/hand_keypoint.cc.o
-sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_base.cc.o
-sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/common_files/ai_utils.cc.o
-sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/common_files/video_pipeline.cc.o
 sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/build.make
 sq_handkp_class.elf: CMakeFiles/sq_handkp_class.elf.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sgf/ws/k230_gesture_io/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable sq_handkp_class.elf"

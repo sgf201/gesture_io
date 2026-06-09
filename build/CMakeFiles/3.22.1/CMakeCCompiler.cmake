@@ -1,7 +1,7 @@
-set(CMAKE_C_COMPILER "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc")
+set(CMAKE_C_COMPILER "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-gcc")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "GNU")
-set(CMAKE_C_COMPILER_VERSION "12.0.1")
+set(CMAKE_C_COMPILER_VERSION "14.1.1")
 set(CMAKE_C_COMPILER_VERSION_INTERNAL "")
 set(CMAKE_C_COMPILER_WRAPPER "")
 set(CMAKE_C_STANDARD_COMPUTED_DEFAULT "17")
@@ -18,14 +18,15 @@ set(CMAKE_C_SIMULATE_ID "")
 set(CMAKE_C_COMPILER_FRONTEND_VARIANT "")
 set(CMAKE_C_SIMULATE_VERSION "")
 
+set(CMAKE_C_COMPILER_SYSROOT "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/../sysroot/usr")
+set(CMAKE_COMPILER_SYSROOT "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/../sysroot/usr")
 
 
-
-set(CMAKE_AR "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-ar")
-set(CMAKE_C_COMPILER_AR "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc-ar")
-set(CMAKE_RANLIB "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-ranlib")
-set(CMAKE_C_COMPILER_RANLIB "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc-ranlib")
-set(CMAKE_LINKER "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-ld")
+set(CMAKE_AR "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-ar")
+set(CMAKE_C_COMPILER_AR "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-gcc-ar")
+set(CMAKE_RANLIB "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-ranlib")
+set(CMAKE_C_COMPILER_RANLIB "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-gcc-ranlib")
+set(CMAKE_LINKER "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-ld")
 set(CMAKE_MT "")
 set(CMAKE_COMPILER_IS_GNUCC 1)
 set(CMAKE_C_COMPILER_LOADED 1)
@@ -66,7 +67,7 @@ endif()
 
 
 
-set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/include;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1/include")
+set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/lib/gcc/riscv64-unknown-linux-gnu/14.1.1/include;/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/lib/gcc/riscv64-unknown-linux-gnu/14.1.1/include-fixed;/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/riscv64-unknown-linux-gnu/include;/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot/usr/include")
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "atomic;gcc;gcc_s;c;gcc;gcc_s")
-set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc/riscv64-unknown-linux-musl/12.0.1;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/lib/gcc;/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/riscv64-unknown-linux-musl/lib")
+set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/lib/gcc/riscv64-unknown-linux-gnu/14.1.1/lib64/lp64d;/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/riscv64-unknown-linux-gnu/lib64/lp64d;/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot/lib64/lib64/lp64d;/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot/usr/lib64/lib64/lp64d;/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot/lib64/lp64d;/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot/usr/lib64/lp64d;/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/lib/gcc/riscv64-unknown-linux-gnu/14.1.1;/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/lib/gcc;/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/riscv64-unknown-linux-gnu/lib;/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot/lib;/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot/usr/lib")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

@@ -15,10 +15,10 @@
 ########################
 
 //Path to a program.
-CMAKE_ADDR2LINE:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-addr2line
+CMAKE_ADDR2LINE:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-addr2line
 
 //Path to a program.
-CMAKE_AR:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-ar
+CMAKE_AR:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
@@ -29,14 +29,14 @@ CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_CXX_COMPILER_AR:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc-ar
+CMAKE_CXX_COMPILER_AR:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-gcc-ar
 
 //A wrapper around 'ranlib' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc-ranlib
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-gcc-ranlib
 
 //Flags used by the CXX compiler during all build types.
-CMAKE_CXX_FLAGS:STRING=
+CMAKE_CXX_FLAGS:STRING=-march=rv64imafdcv -mabi=lp64d -mcmodel=medany -Wno-narrowing
 
 //Flags used by the CXX compiler during DEBUG builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=-g
@@ -52,14 +52,14 @@ CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_C_COMPILER_AR:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc-ar
+CMAKE_C_COMPILER_AR:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-gcc-ar
 
 //A wrapper around 'ranlib' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_C_COMPILER_RANLIB:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-gcc-ranlib
+CMAKE_C_COMPILER_RANLIB:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-gcc-ranlib
 
 //Flags used by the C compiler during all build types.
-CMAKE_C_FLAGS:STRING=
+CMAKE_C_FLAGS:STRING=-march=rv64imafdcv -mabi=lp64d -mcmodel=medany
 
 //Flags used by the C compiler during DEBUG builds.
 CMAKE_C_FLAGS_DEBUG:STRING=-g
@@ -98,7 +98,7 @@ CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-ld
+CMAKE_LINKER:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-ld
 
 //Path to a program.
 CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/gmake
@@ -124,13 +124,13 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_NM:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-nm
+CMAKE_NM:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-nm
 
 //Path to a program.
-CMAKE_OBJCOPY:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-objcopy
+CMAKE_OBJCOPY:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-objcopy
 
 //Path to a program.
-CMAKE_OBJDUMP:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-objdump
+CMAKE_OBJDUMP:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-objdump
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -139,13 +139,13 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=sq_handkp_class
+CMAKE_PROJECT_NAME:STATIC=gesture_demo
 
 //Path to a program.
-CMAKE_RANLIB:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-ranlib
+CMAKE_RANLIB:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-ranlib
 
 //Path to a program.
-CMAKE_READELF:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-readelf
+CMAKE_READELF:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-readelf
 
 //Flags used by the linker during the creation of shared libraries
 // during all build types.
@@ -195,7 +195,10 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_STRIP:FILEPATH=/home/sgf/.kendryte/k230_toolchains/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin/riscv64-unknown-linux-musl-strip
+CMAKE_STRIP:FILEPATH=/opt/toolchain/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.2/bin/riscv64-unknown-linux-gnu-strip
+
+//No help, variable specified on the command line.
+CMAKE_SYSROOT:UNINITIALIZED=/home/sgf/ws/k230_linux_pangofly/output/k230_canmv_lckfb_defconfig/host/riscv64-buildroot-linux-gnu/sysroot
 
 //The CMake toolchain file
 CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/sgf/ws/k230_gesture_io/cmake/Riscv64.cmake
@@ -206,14 +209,26 @@ CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/sgf/ws/k230_gesture_io/cmake/Riscv64.cmake
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Value Computed by CMake
-sq_handkp_class_BINARY_DIR:STATIC=/home/sgf/ws/k230_gesture_io/build
+//No help, variable specified on the command line.
+GSL_INCLUDE_DIR:UNINITIALIZED=/home/sgf/ws/k230_pangofly/src/rtsmart/libs/nncase/riscv64
+
+//No help, variable specified on the command line.
+K230_LINUX_INCLUDE_DIR:UNINITIALIZED=/home/sgf/ws/k230_linux_pangofly/buildroot-overlay/package
+
+//No help, variable specified on the command line.
+PANGOFLY_INCLUDE_DIR:UNINITIALIZED=/home/sgf/ws/k230_gesture_io/pangofly
+
+//No help, variable specified on the command line.
+PANGOFLY_LIBRARY:UNINITIALIZED=/home/sgf/ws/k230_gesture_io/pangofly/build_k230/libpangofly.so
 
 //Value Computed by CMake
-sq_handkp_class_IS_TOP_LEVEL:STATIC=ON
+gesture_demo_BINARY_DIR:STATIC=/home/sgf/ws/k230_gesture_io/build
 
 //Value Computed by CMake
-sq_handkp_class_SOURCE_DIR:STATIC=/home/sgf/ws/k230_gesture_io
+gesture_demo_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+gesture_demo_SOURCE_DIR:STATIC=/home/sgf/ws/k230_gesture_io
 
 
 ########################
