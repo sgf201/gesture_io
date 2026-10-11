@@ -31,6 +31,8 @@
 #include "sensor_buf_manager.h"
 #include "hand_detection.h"
 #include "hand_keypoint.h"
+#include "debug_http_server.h"
+#include "udp_command.h"
 
 using std::cerr;
 using std::cout;
@@ -48,6 +50,10 @@ static struct timeval tv, tv2;
 static struct display* display;
 struct display_buffer* draw_buffer;
 
+// 调试 HTTP 服务（提供手位置+识别结果图片）和 UDP 命令转发服务
+static DebugHttpServer debug_http_server(8080);
+static UdpCommandServer udp_command_server(50000);
+
 // 串口通信协议
 #define PROTOCOL_START "@#"
 #define PROTOCOL_END "#@"
@@ -60,6 +66,35 @@ void send_command(const string& cmd) {
 string last_gesture = "";
 unsigned int gesture_stable_count = 0;
 const unsigned int STABLE_THRESHOLD = 3;
+
+// 调试图片尺寸（传感器为 1920x1080，此处缩小一半便于网络传输）
+static const int DEBUG_IMG_WIDTH = 960;
+static const int DEBUG_IMG_HEIGHT = 540;
+
+/**
+ * @brief 将当前手位置和识别结果绘制到调试图片，并更新到 HTTP 服务
+ *
+ * 在黑色背景上绘制手掌检测框、21 个关键点连线以及当前识别到的手势文本。
+ * 坐标从传感器空间 (1920x1080) 缩放到调试图片尺寸。
+ */
+static void update_debug_frame() {
+    cv::Mat debug_img(DEBUG_IMG_HEIGHT, DEBUG_IMG_WIDTH, CV_8UC3, cv::Scalar(0, 0, 0));
+
+    result_mutex.lock();
+    for (size_t i = 0; i < hand_results.size() && i < hand_keypoint_results.size(); ++i) {
+        HandKeypoint::draw_keypoints(debug_img, hand_results[i], hand_keypoint_results[i], false);
+    }
+    result_mutex.unlock();
+
+    // 在左上角叠加当前最新手势
+    if (!last_gesture.empty()) {
+        cv::putText(debug_img, "Gesture: " + last_gesture,
+                    cv::Point(10, 35), cv::FONT_HERSHEY_COMPLEX, 1.0,
+                    cv::Scalar(0, 255, 0), 2);
+    }
+
+    debug_http_server.update_frame(debug_img);
+}
 
 
 void print_usage(const char *name)
@@ -168,6 +203,10 @@ static void ai_proc(char *argv[], int video_device) {
             }
         }
         result_mutex.unlock();
+
+        // 更新调试图片（供 HTTP 服务分发）
+        update_debug_frame();
+
         kpu_frame_count += 1;
         v4l2_drm_dump_release(&context);
     }
@@ -339,6 +378,10 @@ int main(int argc, char *argv[])
             return -1;
         }
 
+        // 启动调试 HTTP 服务和 UDP 命令转发服务
+        debug_http_server.start();
+        udp_command_server.start();
+
         // 锁住结果互斥量，等待首次帧到来后解锁
         result_mutex.lock();
 
@@ -366,6 +409,10 @@ int main(int argc, char *argv[])
                 usleep(100000);
             }
         }
+
+        // 停止网络服务
+        debug_http_server.stop();
+        udp_command_server.stop();
 
         // 等待两个线程完成后退出程序
         display_thread.join();

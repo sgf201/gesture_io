@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
+project(gesture_io C CXX)
 if(CMAKE_TOOLCHAIN_FILE MATCHES "buildroot/toolchainfile.cmake")
     get_filename_component(CURRENT_DIR_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
     project(${CURRENT_DIR_NAME})
@@ -12,12 +13,18 @@ if(CMAKE_TOOLCHAIN_FILE MATCHES "buildroot/toolchainfile.cmake")
 
 else()
 
-    set(src main.cc
+    set(src main_linux.cc
         ${CMAKE_SOURCE_DIR}/common/utils.cc
         ${CMAKE_SOURCE_DIR}/common/ai_base.cc
         ${CMAKE_SOURCE_DIR}/common/sensor_buf_manager.cc
-        hand_detection.cc hand_keypoint.cc)
+        hand_detection.cc hand_keypoint.cc
+        udp_command.cc debug_http_server.cc)
     set(bin sq_handkp_class.elf)
+
+    include_directories(${CMAKE_SOURCE_DIR}
+        ${CMAKE_SOURCE_DIR}/common
+        ${CMAKE_SYSROOT}/usr/include/libdrm
+        ${CMAKE_SYSROOT}/usr/include/opencv4)
 
     add_executable(${bin} ${src})
 
