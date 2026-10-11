@@ -26,6 +26,10 @@
 #include <thread>
 #include <string>
 #include <fstream>
+#include <fcntl.h>
+#include <unistd.h>
+#include <cerrno>
+#include <cstring>
 #include "utils.h"
 #include "setting.h"
 #include "sensor_buf_manager.h"
@@ -61,6 +65,17 @@ static UdpCommandServer udp_command_server(50000);
 void send_command(const string& cmd) {
     printf("%s%s%s\n", PROTOCOL_START, cmd.c_str(), PROTOCOL_END);
     fflush(stdout);
+    // 直接写硬件串口：stdout 被 init 脚本重定向到日志文件时，
+    // 仅靠 printf 无法将命令送达串口（与板上旧版行为保持一致）
+    int fd = open("/dev/ttyS0", O_WRONLY | O_NONBLOCK);
+    if (fd >= 0) {
+        dprintf(fd, "%s%s%s\n", PROTOCOL_START, cmd.c_str(), PROTOCOL_END);
+        close(fd);
+        printf("[UART] Sent to ttyS0: %s%s%s\n", PROTOCOL_START, cmd.c_str(), PROTOCOL_END);
+    } else {
+        printf("[UART] ttyS0 open failed (errno=%d: %s)\n", errno, strerror(errno));
+    }
+    fflush(stdout);
 }
 
 string last_gesture = "";
@@ -72,26 +87,36 @@ static const int DEBUG_IMG_WIDTH = 960;
 static const int DEBUG_IMG_HEIGHT = 540;
 
 /**
- * @brief 将当前手位置和识别结果绘制到调试图片，并更新到 HTTP 服务
+ * @brief 将摄像头画面和识别结果绘制到调试图片，并更新到 HTTP 服务
  *
- * 在黑色背景上绘制手掌检测框、21 个关键点连线以及当前识别到的手势文本。
- * 坐标从传感器空间 (1920x1080) 缩放到调试图片尺寸。
+ * 背景取自 AI 输入 tensor（传感器 BG3P 平面格式，CHW 布局），缩放到调试图片尺寸，
+ * 再叠加手掌检测框、21 个关键点连线以及当前识别到的手势文本。
  */
-static void update_debug_frame() {
-    cv::Mat debug_img(DEBUG_IMG_HEIGHT, DEBUG_IMG_WIDTH, CV_8UC3, cv::Scalar(0, 0, 0));
+static void update_debug_frame(runtime_tensor& img_data) {
+    // 读取 AI 输入 tensor 的 host 数据（uint8, {1,3,H,W}）
+    auto host_buf = img_data.impl()->to_host().unwrap()->buffer().as_host().unwrap()
+                        .map(map_access_::map_read).unwrap().buffer();
+    const uint8_t* base = reinterpret_cast<const uint8_t*>(host_buf.data());
+    const int plane = SENSOR_WIDTH * SENSOR_HEIGHT;
+
+    // 各平面先缩放到调试图尺寸，再合并为 BGR，减小拷贝开销
+    // 实测缓冲平面顺序为 R/G/B（plane0=红），合并时交换首尾通道
+    cv::Mat plane_r(SENSOR_HEIGHT, SENSOR_WIDTH, CV_8UC1, const_cast<uint8_t*>(base));
+    cv::Mat plane_g(SENSOR_HEIGHT, SENSOR_WIDTH, CV_8UC1, const_cast<uint8_t*>(base + plane));
+    cv::Mat plane_b(SENSOR_HEIGHT, SENSOR_WIDTH, CV_8UC1, const_cast<uint8_t*>(base + 2 * plane));
+    cv::Mat b_s, g_s, r_s;
+    cv::resize(plane_r, r_s, cv::Size(DEBUG_IMG_WIDTH, DEBUG_IMG_HEIGHT), 0, 0, cv::INTER_AREA);
+    cv::resize(plane_g, g_s, cv::Size(DEBUG_IMG_WIDTH, DEBUG_IMG_HEIGHT), 0, 0, cv::INTER_AREA);
+    cv::resize(plane_b, b_s, cv::Size(DEBUG_IMG_WIDTH, DEBUG_IMG_HEIGHT), 0, 0, cv::INTER_AREA);
+    cv::Mat ch[3] = {b_s, g_s, r_s};
+    cv::Mat debug_img;
+    cv::merge(ch, 3, debug_img);
 
     result_mutex.lock();
     for (size_t i = 0; i < hand_results.size() && i < hand_keypoint_results.size(); ++i) {
         HandKeypoint::draw_keypoints(debug_img, hand_results[i], hand_keypoint_results[i], false);
     }
     result_mutex.unlock();
-
-    // 在左上角叠加当前最新手势
-    if (!last_gesture.empty()) {
-        cv::putText(debug_img, "Gesture: " + last_gesture,
-                    cv::Point(10, 35), cv::FONT_HERSHEY_COMPLEX, 1.0,
-                    cv::Scalar(0, 255, 0), 2);
-    }
 
     debug_http_server.update_frame(debug_img);
 }
@@ -204,8 +229,8 @@ static void ai_proc(char *argv[], int video_device) {
         }
         result_mutex.unlock();
 
-        // 更新调试图片（供 HTTP 服务分发）
-        update_debug_frame();
+        // 更新调试图片（供 HTTP 服务分发，背景为摄像头画面）
+        update_debug_frame(img_data);
 
         kpu_frame_count += 1;
         v4l2_drm_dump_release(&context);
